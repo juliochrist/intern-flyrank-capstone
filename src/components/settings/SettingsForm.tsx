@@ -38,7 +38,12 @@ export function SettingsForm() {
     setSuccessMessage(null);
     await saveSettings(data);
     setSuccessMessage("Your settings have been saved successfully.");
-    reset({ ...data, currentPassword: "", newPassword: "", confirmPassword: "" });
+    reset({
+      ...data,
+      currentPassword: "",
+      newPassword: "",
+      confirmPassword: "",
+    });
   }
 
   return (
@@ -50,7 +55,9 @@ export function SettingsForm() {
           autoComplete="name"
           hasError={Boolean(errors.fullName)}
           describedBy={errors.fullName ? "fullName-error" : undefined}
-          {...register("fullName", { required: settingsValidationMessages.required })}
+          {...register("fullName", {
+            required: settingsValidationMessages.required,
+          })}
         />
       </FormField>
 
@@ -71,8 +78,8 @@ export function SettingsForm() {
         />
       </FormField>
 
-      <fieldset className="space-y-5 rounded-xl border border-slate-100 bg-slate-50/50 p-4">
-        <legend className="px-1 text-sm font-medium text-slate-900">
+      <fieldset className="space-y-5 rounded-xl border border-glass-border bg-glass-bg p-4">
+        <legend className="px-1 text-sm font-medium text-foreground/80">
           Change password
         </legend>
 
@@ -150,7 +157,7 @@ export function SettingsForm() {
         <p
           role="status"
           aria-live="polite"
-          className="rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700"
+          className="rounded-xl border border-success/30 bg-success/10 px-4 py-3 text-sm text-success"
         >
           {successMessage}
         </p>

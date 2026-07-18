@@ -5,8 +5,11 @@ type SectionProps = {
   className?: string;
 };
 
-export default function Section({ children, className = "" }: SectionProps) {
+export default function Section({
+  children,
+  className = "",
+}: SectionProps) {
   return (
-    <section className={`py-10 sm:py-14 ${className}`}>{children}</section>
+    <section className={`py-16 sm:py-24 ${className}`}>{children}</section>
   );
 }

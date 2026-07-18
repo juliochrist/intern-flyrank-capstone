@@ -1,11 +1,73 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #4f46e5;
-  --color-primary-hover: #4338ca;
-  --color-secondary: #64748b;
-  --color-background: #f8fafc;
-  --color-foreground: #0f172a;
-  --color-border: #e2e8f0;
+  --color-base: #0a0a0f;
+  --color-surface: #12121a;
+  --color-foreground: #f1f5f9;
   --color-muted: #94a3b8;
+  --color-muted-foreground: #64748b;
+
+  --color-primary: #6c63ff;
+  --color-primary-hover: #5a52e0;
+  --color-primary-foreground: #ffffff;
+
+  --color-accent: #22d3ee;
+  --color-accent-hover: #06b6d4;
+
+  --color-success: #22c55e;
+  --color-error: #ef4444;
+  --color-warning: #f59e0b;
+
+  --color-border: rgba(255, 255, 255, 0.1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0a0a0f;
+  color: #f1f5f9;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+::selection {
+  background-color: #6c63ff;
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid #6c63ff;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Blob animations */
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(80px, -60px) scale(1.08);
+  }
+  50% {
+    transform: translate(-40px, 50px) scale(0.92);
+  }
+  75% {
+    transform: translate(50px, 30px) scale(1.04);
+  }
+}
+
+@keyframes blob-drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(60px, -40px);
+  }
+  66% {
+    transform: translate(-30px, 60px);
+  }
 }

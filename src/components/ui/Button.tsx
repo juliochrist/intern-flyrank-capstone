@@ -17,11 +17,11 @@ export function Button({
   const base =
     "inline-flex w-full items-center justify-center rounded-xl px-4 py-2.5 text-sm font-medium transition disabled:cursor-not-allowed";
 
-  const variants = {
+  const styles = {
     primary:
-      "bg-indigo-600 text-white hover:bg-indigo-500 disabled:bg-slate-300",
+      "btn-primary disabled:opacity-50",
     secondary:
-      "border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 disabled:opacity-60",
+      "btn-secondary disabled:opacity-50",
   };
 
   return (
@@ -29,10 +29,10 @@ export function Button({
       type={type}
       disabled={disabled || isLoading}
       aria-busy={isLoading}
-      className={`${base} ${variants[variant]} ${className}`}
+      className={`${base} ${styles[variant]} ${className}`}
       {...props}
     >
-      {isLoading ? "Saving…" : children}
+      {isLoading ? "Saving\u2026" : children}
     </button>
   );
 }

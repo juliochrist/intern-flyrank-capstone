@@ -31,8 +31,7 @@ const projects = [
   },
   {
     title: "Life OS",
-    description:
-      "Personal productivity and life management system.",
+    description: "Personal productivity and life management system.",
     url: "https://life-os-beta-mocha.vercel.app",
     status: "Live",
   },
@@ -56,25 +55,25 @@ export default function ProjectsPage() {
   return (
     <Container>
       <Section>
-        <h1 className="text-3xl font-bold text-foreground sm:text-4xl">
-          Projects
-        </h1>
-        <p className="mt-3 text-secondary">
-          AI-powered web applications built during the FlyRank internship.
-        </p>
+        <div className="mx-auto max-w-3xl">
+          <h1 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            Projects
+          </h1>
+          <p className="mt-3 text-lg text-muted">
+            AI-powered web applications built during the FlyRank internship.
+          </p>
+        </div>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project) => (
             <Card key={project.title}>
-              <div className="flex items-start justify-between">
+              <div className="flex items-start justify-between gap-3">
                 <h2 className="text-lg font-semibold text-foreground">
                   {project.title}
                 </h2>
-                <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
-                  {project.status}
-                </span>
+                <span className="badge shrink-0">{project.status}</span>
               </div>
-              <p className="mt-3 text-sm text-secondary">
+              <p className="mt-3 text-sm leading-relaxed text-muted">
                 {project.description}
               </p>
               {project.url && (
@@ -82,9 +81,12 @@ export default function ProjectsPage() {
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 inline-block text-sm font-medium text-primary transition hover:text-primary-hover"
+                  className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary transition hover:text-primary-hover"
                 >
-                  Visit site &rarr;
+                  Visit site
+                  <span className="transition-transform group-hover:translate-x-0.5">
+                    &rarr;
+                  </span>
                 </a>
               )}
             </Card>
