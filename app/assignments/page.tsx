@@ -178,6 +178,34 @@ const weeks: WeekData[] = [
       },
     ],
   },
+  {
+    week: 4,
+    label: "Playground Components & AI Chat",
+    status: "completed",
+    items: [
+      {
+        title: "Empty but Live",
+        filePath: "week-04/empty-but-live.md",
+        summary:
+          "Documented the live deployment on Vercel, verified HTTPS and mobile responsiveness, prepared Claude Project context, and reflected on why deploying early reduces risk and accelerates feedback.",
+        status: "completed",
+      },
+      {
+        title: "FE-05: Accessible React Playground Components",
+        filePath: "../playground",
+        summary:
+          "Built three accessible UI components from scratch: Modal Dialog (focus trap, ESC/backdrop close, aria-modal), Tabs (controlled/uncontrolled, keyboard nav, roving tabindex), and Disclosure/Accordion (aria-expanded, CSS animation). Includes NOTES.md comparing implementation against shadcn/ui.",
+        status: "completed",
+      },
+      {
+        title: "FE-06: Streaming AI Chat Interface",
+        filePath: "../components/chat",
+        summary:
+          "Implemented a production-quality streaming chat UI using Vercel AI SDK v4 with Claude. Features token-by-token streaming, stop/regenerate, markdown rendering with syntax highlighting, auto-scroll with jump-to-latest, animated thinking indicator, and multi-turn conversation history.",
+        status: "completed",
+      },
+    ],
+  },
 ];
 
 function StatusBadge({ status }: { status: "completed" | "in-progress" }) {
