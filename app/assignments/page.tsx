@@ -102,7 +102,7 @@ const weeks: WeekData[] = [
   {
     week: 3,
     label: "Identity, Content & Next.js Migration",
-    status: "in-progress",
+    status: "completed",
     items: [
       {
         title: "Identity Kit",
@@ -157,7 +157,7 @@ const weeks: WeekData[] = [
             filePath: "week-03/ai-react-development/manual-improvements.md",
             summary:
               "Lists every manual improvement made after AI generation: folder restructuring, component refactoring, better naming, UI refinements, TypeScript fixes, responsive adjustments, and accessibility improvements. Ends with a final pre-commit checklist.",
-            status: "in-progress",
+            status: "completed",
           },
           {
             title: "Prompts Used During Development",
@@ -171,10 +171,10 @@ const weeks: WeekData[] = [
             filePath: "week-03/ai-react-development/screenshots.md",
             summary:
               "Placeholder document listing all required screenshots for documentation: app preview, settings page with fields, validation errors, success message, responsive layouts at 375/768/1280px, navbar active state, and ARIA attributes in dev tools.",
-            status: "in-progress",
+            status: "completed",
           },
         ],
-        status: "in-progress",
+        status: "completed",
       },
     ],
   },
