@@ -47,6 +47,7 @@
 - [Empty but Live](assignments/week-04/empty-but-live.md)
 - [Three Roads](assignments/week-04/three-roads.md)
 - [Workflow as a Service](assignments/week-04/workflow-as-a-service.md)
+- [Agentic Systems & MCP](assignments/week-04/agent-and-mcp.md)
 
 ---
 
@@ -55,7 +56,7 @@
 - ✅ Week 1 Completed
 - ✅ Week 2 Completed
 - ✅ Week 3 Completed
-- 🚧 Week 4 In Progress
+- ✅ Week 4 Completed
 
 ### Week 3
 
@@ -72,4 +73,5 @@
 
 - ✅ Empty but Live
 - ✅ Three Roads
-- 🚧 Workflow as a Service
+- ✅ Workflow as a Service
+- ✅ Agentic Systems & MCP
