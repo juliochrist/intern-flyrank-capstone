@@ -204,6 +204,27 @@ const weeks: WeekData[] = [
           "Implemented a production-quality streaming chat UI using Vercel AI SDK v4 with Claude. Features token-by-token streaming, stop/regenerate, markdown rendering with syntax highlighting, auto-scroll with jump-to-latest, animated thinking indicator, and multi-turn conversation history.",
         status: "completed",
       },
+      {
+        title: "Three Roads",
+        filePath: "week-04/three-roads.md",
+        summary:
+          "Evaluated three stack options (Vite SPA, Next.js SSG, full Next.js + backend) against real constraints: free hosting, frontend skill level, portfolio needs, and honest dynamic requirements. Chose Next.js static generation on Vercel with the rationale that the portfolio needs no backend — projects that do (TradeIntel, SmartPOS) live in separate repos.",
+        status: "completed",
+      },
+      {
+        title: "Workflow as a Service",
+        filePath: "week-04/workflow-as-a-service.md",
+        summary:
+          "Documented the Draft → Critique → Revise pipeline used across the internship. Includes 5 real runs (SettingsForm, UI primitives, validation module, README, commit messages), time comparison showing 159 min saved across runs, 6 failure points, human review checklist, and a reusable prompt template in workflow-assets/.",
+        status: "completed",
+      },
+      {
+        title: "Agentic Systems & MCP",
+        filePath: "week-04/agent-and-mcp.md",
+        summary:
+          "Classified the FL-04 pipeline as a workflow (not agent), explained MCP core concepts (tools, resources, prompts), documented two active MCP connections (opencode tools + Vercel AI SDK/Anthropic), showed 3 tool-based tasks from this session, and outlined one concrete agent upgrade: auto-critique with tsc/lint integration.",
+        status: "completed",
+      },
     ],
   },
 ];
