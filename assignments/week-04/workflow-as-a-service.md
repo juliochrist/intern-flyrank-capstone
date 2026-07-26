@@ -83,11 +83,11 @@ Input (task + constraints)
 
 ## Tools Used
 
-| Tool | Step | Why |
-|------|------|-----|
-| **Claude** | Draft, Critique, Revise | Better at frontend code, accessibility patterns, and following output structure. Used `getValues` correctly on first try. |
-| **ChatGPT** | Draft (occasional) | Used for comparison runs (Prompting Fundamentals V5). Less consistent on TypeScript and accessibility. |
-| **Claude Project** | All steps | Stores identity kit, content map, case studies, and project instructions so I don't re-describe context every session. |
+| Tool               | Step                    | Why                                                                                                                       |
+| ------------------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **Claude**         | Draft, Critique, Revise | Better at frontend code, accessibility patterns, and following output structure. Used `getValues` correctly on first try. |
+| **ChatGPT**        | Draft (occasional)      | Used for comparison runs (Prompting Fundamentals V5). Less consistent on TypeScript and accessibility.                    |
+| **Claude Project** | All steps               | Stores identity kit, content map, case studies, and project instructions so I don't re-describe context every session.    |
 
 I do not use NotebookLM or custom GPTs for this pipeline. Claude Project with saved reference documents is sufficient.
 
@@ -246,13 +246,13 @@ Keep all existing code that does not need to change.
 
 Times are based on documented work from the Prompt Ladder and Prompting Fundamentals exercises.
 
-| Task | Manual (no AI) | Workflow (Draft→Critique→Revise) | Setup (one-time) | Time Saved per Run |
-|------|---------------|----------------------------------|------------------|-------------------|
-| SettingsForm (6 files) | 90 min | 30 min (10 draft + 10 critique + 10 revise) | 20 min template | 60 min |
-| UI Primitives (3 components) | 60 min | 20 min (8 + 6 + 6) | — | 40 min |
-| Validation module | 30 min | 8 min (3 + 3 + 2) | — | 22 min |
-| README draft | 45 min | 12 min (5 + 4 + 3) | — | 33 min |
-| Commit message | 5 min | 1 min | — | 4 min |
+| Task                         | Manual (no AI) | Workflow (Draft→Critique→Revise)            | Setup (one-time) | Time Saved per Run |
+| ---------------------------- | -------------- | ------------------------------------------- | ---------------- | ------------------ |
+| SettingsForm (6 files)       | 90 min         | 30 min (10 draft + 10 critique + 10 revise) | 20 min template  | 60 min             |
+| UI Primitives (3 components) | 60 min         | 20 min (8 + 6 + 6)                          | —                | 40 min             |
+| Validation module            | 30 min         | 8 min (3 + 3 + 2)                           | —                | 22 min             |
+| README draft                 | 45 min         | 12 min (5 + 4 + 3)                          | —                | 33 min             |
+| Commit message               | 5 min          | 1 min                                       | —                | 4 min              |
 
 **Setup cost:** The Draft Prompt Template took ~20 min to develop across V0–V5 of the Prompt Ladder. This is a one-time investment that applies to every future run.
 
@@ -280,16 +280,16 @@ Times are based on documented work from the Prompt Ladder and Prompting Fundamen
 
 ## Human Review Required
 
-| Check | Why AI Cannot Do It |
-|-------|-------------------|
-| **Factual accuracy** | AI describes what it *thinks* the project does, not what it *actually* does. It guessed "full-stack with API routes" for a static portfolio. |
-| **Business logic** | AI does not understand the domain. It cannot verify that validation rules, data transformations, or conditional logic match real requirements. |
-| **Tone and voice** | AI documentation and case studies tend toward verbose, buzzword-heavy language. I rewrite or remove at least 30% of AI-generated prose. |
-| **API version correctness** | AI guessed React 18 instead of 19. I must verify version numbers, package names, and API signatures against `package.json` and docs. |
-| **Edge case completeness** | AI handles the edge cases I listed in the prompt but misses unlisted ones. Only a human familiar with the feature can think of the cases the prompt didn't specify. |
-| **Accessibility in practice** | AI adds correct `aria-*` attributes but cannot test with a screen reader. I tab through every element and verify focus order, visible indicators, and announcements. |
-| **Responsive layout** | AI generates responsive classes but does not resize the viewport. I test at 375px, 768px, and 1280px. |
-| **Commit scope/type accuracy** | AI sometimes chooses wrong conventional commit type. I verify the commit message matches the diff before pushing. |
+| Check                          | Why AI Cannot Do It                                                                                                                                                  |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Factual accuracy**           | AI describes what it _thinks_ the project does, not what it _actually_ does. It guessed "full-stack with API routes" for a static portfolio.                         |
+| **Business logic**             | AI does not understand the domain. It cannot verify that validation rules, data transformations, or conditional logic match real requirements.                       |
+| **Tone and voice**             | AI documentation and case studies tend toward verbose, buzzword-heavy language. I rewrite or remove at least 30% of AI-generated prose.                              |
+| **API version correctness**    | AI guessed React 18 instead of 19. I must verify version numbers, package names, and API signatures against `package.json` and docs.                                 |
+| **Edge case completeness**     | AI handles the edge cases I listed in the prompt but misses unlisted ones. Only a human familiar with the feature can think of the cases the prompt didn't specify.  |
+| **Accessibility in practice**  | AI adds correct `aria-*` attributes but cannot test with a screen reader. I tab through every element and verify focus order, visible indicators, and announcements. |
+| **Responsive layout**          | AI generates responsive classes but does not resize the viewport. I test at 375px, 768px, and 1280px.                                                                |
+| **Commit scope/type accuracy** | AI sometimes chooses wrong conventional commit type. I verify the commit message matches the diff before pushing.                                                    |
 
 ---
 
