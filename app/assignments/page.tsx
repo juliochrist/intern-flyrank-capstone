@@ -11,7 +11,7 @@ import {
 import Container from "../../components/Container";
 
 const GITHUB_BASE =
-  "https://github.com/juliochrist/flyrank-capstone/blob/main/assignments";
+  "https://github.com/juliochrist/intern-flyrank-capstone/blob/main/assignments";
 
 type AssignmentItem = {
   title: string;
@@ -223,6 +223,34 @@ const weeks: WeekData[] = [
         filePath: "week-04/agent-and-mcp.md",
         summary:
           "Classified the FL-04 pipeline as a workflow (not agent), explained MCP core concepts (tools, resources, prompts), documented two active MCP connections (opencode tools + Vercel AI SDK/Anthropic), showed 3 tool-based tasks from this session, and outlined one concrete agent upgrade: auto-critique with tsc/lint integration.",
+        status: "completed",
+      },
+    ],
+  },
+  {
+    week: 5,
+    label: "Ship the Ugly One & Personal Agent",
+    status: "completed",
+    items: [
+      {
+        title: "Ship the Ugly One",
+        filePath: "week-05/ship-the-ugly-one.md",
+        summary:
+          "Turned the portfolio into a live public website with real content from earlier weeks. Populated every page with actual work, case studies, and images. Added featured projects, bio, experience, tech tags, and fixed broken links and CSS. Includes real-person review notes and a 'still ugly' list of remaining polish items.",
+        status: "completed",
+      },
+      {
+        title: "FL-06: Design Your Personal Agent",
+        filePath: "week-05/fl-06-personal-agent.md",
+        summary:
+          "Designed a study coach agent grounded in my own notes and assignment documents. Covers JTBD, usage frequency, tools/data needs, draft instructions, 5 eval cases, risks and guardrails, and platform choice (Claude Project with connectors and skills).",
+        status: "completed",
+      },
+      {
+        title: "FL-07: Build the Agent",
+        filePath: "week-05/fl-07-build-agent.md",
+        summary:
+          "Built the narrowest working version of the study coach agent. Created a full agent workspace (spec, instructions, eval cases, tool map, build log, run capture notes) and a lightweight filesystem demo script that reads local assignment files and prepares structured context for Claude Project.",
         status: "completed",
       },
     ],
