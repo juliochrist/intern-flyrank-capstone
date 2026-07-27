@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mail, Globe } from "lucide-react";
+import { Mail, Globe, BriefcaseBusiness } from "lucide-react";
 import Container from "../../components/Container";
 import Card from "../../components/Card";
 import Section from "../../components/Section";
@@ -22,7 +22,7 @@ export default function ContactPage() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2">
+        <div className="mt-12 grid gap-6 sm:grid-cols-3">
           <Card>
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
               <Mail className="h-5 w-5" />
@@ -32,10 +32,28 @@ export default function ContactPage() {
             </h2>
             <p className="mt-2 text-sm text-muted">
               <a
-                href="mailto:julio@example.com"
+                href="mailto:julio.christianto@10x.ai"
                 className="text-primary transition hover:text-primary-hover"
               >
                 julio.christianto@10x.ai
+              </a>
+            </p>
+          </Card>
+          <Card>
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20">
+              <BriefcaseBusiness className="h-5 w-5" />
+            </div>
+            <h2 className="mt-4 text-lg font-semibold text-foreground">
+              LinkedIn
+            </h2>
+            <p className="mt-2 text-sm text-muted">
+              <a
+                href="https://linkedin.com/in/juliochrist"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary transition hover:text-primary-hover"
+              >
+                linkedin.com/in/juliochrist
               </a>
             </p>
           </Card>
@@ -48,12 +66,12 @@ export default function ContactPage() {
             </h2>
             <p className="mt-2 text-sm text-muted">
               <a
-                href="https://github.com/juliochrist/flyrank-capstone"
+                href="https://github.com/juliochrist/intern-flyrank-capstone"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary transition hover:text-primary-hover"
               >
-                github.com/juliochrist/flyrank-capstone
+                github.com/juliochrist/intern-flyrank-capstone
               </a>
             </p>
           </Card>

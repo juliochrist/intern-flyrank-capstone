@@ -9,44 +9,59 @@ export const metadata: Metadata = {
 
 const projects = [
   {
-    title: "TradeIntel",
+    title: "AI Career Navigator",
     description:
-      "AI-powered market analysis tool for traders. Built with React, TypeScript, and Supabase.",
-    url: "https://tradeintel-v2.vercel.app",
+      "AI-assisted career planning tool that helps users explore roles, identify skill gaps, and generate personalized learning paths.",
+    url: "https://ai-career-navigator.vercel.app",
+    tech: ["Next.js 15", "React 19", "TypeScript", "OpenAI API"],
     status: "Live",
   },
   {
     title: "SmartPOS AI",
     description:
-      "Intelligent point-of-sale dashboard with AI-powered inventory and sales analytics.",
+      "Intelligent point-of-sale dashboard with AI-powered inventory management and sales analytics. Surfaces actionable insights — top inventory, restock alerts, and sales forecasts.",
     url: "https://smartpos-ai-seven.vercel.app",
+    tech: ["React 19", "TypeScript", "Supabase"],
     status: "Live",
   },
   {
     title: "Client Pulse",
     description:
-      "CRM dashboard for managing client relationships and tracking interactions.",
+      "Client relationship management dashboard for tracking interactions, managing contacts, and monitoring engagement metrics.",
     url: "https://client-pulse-xi.vercel.app",
+    tech: ["Next.js 15", "React 19", "TypeScript"],
+    status: "Live",
+  },
+  {
+    title: "TradeIntel",
+    description:
+      "AI-powered market analysis tool for traders with real-time data visualization and sentiment analysis.",
+    url: "https://tradeintel-v2.vercel.app",
+    tech: ["React 19", "TypeScript", "Supabase", "Chart.js"],
     status: "Live",
   },
   {
     title: "Life OS",
-    description: "Personal productivity and life management system.",
+    description:
+      "Personal productivity and life management system for tracking goals, habits, and daily tasks.",
     url: "https://life-os-beta-mocha.vercel.app",
+    tech: ["React", "TypeScript"],
     status: "Live",
   },
   {
     title: "FE Playground",
     description:
-      "Next.js experimental playground for testing new patterns and features.",
+      "Next.js experimental playground for testing new patterns, performance optimizations, and frontend features.",
     url: "https://fe-playground-nextjs.vercel.app",
+    tech: ["Next.js", "TypeScript"],
     status: "Live",
   },
   {
-    title: "Portfolio Website",
+    title: "FlyRank Capstone",
     description:
-      "This site — a Next.js starter with server components, accessibility, and responsive design.",
-    url: "https://porto-web-taupe.vercel.app",
+      "This portfolio site — built with Next.js 15, React 19, and Tailwind CSS v4. Features server components, accessible UI patterns, and AI-assisted development workflow documentation.",
+    url: "/",
+    tech: ["Next.js 15", "React 19", "TypeScript", "Tailwind CSS v4"],
     status: "Live",
   },
 ];
@@ -61,6 +76,7 @@ export default function ProjectsPage() {
           </h1>
           <p className="mt-3 text-lg text-muted">
             AI-powered web applications built during the FlyRank internship.
+            Ordered by impact — strongest first.
           </p>
         </div>
 
@@ -76,7 +92,24 @@ export default function ProjectsPage() {
               <p className="mt-3 text-sm leading-relaxed text-muted">
                 {project.description}
               </p>
-              {project.url && (
+              {project.tech && (
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {project.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-full px-2.5 py-0.5 text-[10px] font-medium"
+                      style={{
+                        background: "rgba(99,102,241,0.1)",
+                        color: "#6c63ff",
+                        border: "1px solid rgba(99,102,241,0.2)",
+                      }}
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              )}
+              {project.url && project.url !== "/" && (
                 <a
                   href={project.url}
                   target="_blank"
@@ -84,9 +117,7 @@ export default function ProjectsPage() {
                   className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary transition hover:text-primary-hover"
                 >
                   Visit site
-                  <span className="transition-transform group-hover:translate-x-0.5">
-                    &rarr;
-                  </span>
+                  <span>&rarr;</span>
                 </a>
               )}
             </Card>

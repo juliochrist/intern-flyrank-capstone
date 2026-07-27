@@ -17,9 +17,9 @@ export default function Button({
 
   const styles = {
     primary:
-      "btn-primary disabled:opacity-50",
+      "bg-[#6c63ff] text-white hover:bg-[#5a52e0] disabled:opacity-50",
     secondary:
-      "btn-secondary disabled:opacity-50",
+      "border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.05)] text-[#f1f5f9] hover:bg-[rgba(255,255,255,0.1)] disabled:opacity-50",
   };
 
   return (

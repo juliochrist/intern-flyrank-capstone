@@ -49,6 +49,23 @@
 - [Workflow as a Service](assignments/week-04/workflow-as-a-service.md)
 - [Agentic Systems & MCP](assignments/week-04/agent-and-mcp.md)
 
+### Week 5
+
+- [Ship the Ugly One](assignments/week-05/ship-the-ugly-one.md)
+- [FL-06: Design Your Personal Agent](assignments/week-05/fl-06-personal-agent.md)
+- [FL-07: Build the Agent](assignments/week-05/fl-07-build-agent.md)
+- [Deployment Checklist](assignments/week-05/deployment-checklist.md)
+
+### Agent Workspace
+
+- [Agent Spec](agent/agent-spec.md)
+- [Instructions](agent/instructions.md)
+- [Eval Cases](agent/eval-cases.md)
+- [Tool Map](agent/tool-map.md)
+- [Build Log](agent/build-log.md)
+- [Run Capture Notes](agent/run-capture-notes.md)
+- [Demo Script](agent/demo.sh)
+
 ---
 
 ## FlyRank Internship Progress
@@ -57,6 +74,7 @@
 - ✅ Week 2 Completed
 - ✅ Week 3 Completed
 - ✅ Week 4 Completed
+- ✅ Week 5 Completed
 
 ### Week 3
 
