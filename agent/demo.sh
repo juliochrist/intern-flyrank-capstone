@@ -2,16 +2,16 @@
 # Study Coach Agent — Filesystem Connector Demo
 #
 # Usage:
-#   ./agent/demo.sh summarize  "query"     — find relevant docs and summarise
+#   ./agent/demo.sh summarize  "topic"     — find relevant docs and summarise
 #   ./agent/demo.sh steps      "brief"     — turn a brief into next steps
-#   ./agent/demo.sh draft      "files"     — draft submission note
+#   ./agent/demo.sh draft      "changes"   — draft submission note
 #   ./agent/demo.sh explain    "concept"   — explain concept from my docs
-#   ./agent/demo.sh next       "progress"  — what to do next
+#   ./agent/demo.sh next       "status"    — what to do next
 #
-# This is a prompt-preparation script. It reads local assignment files
-# and prepares structured context. The actual agent reasoning happens
-# in Claude Project using the instructions in agent/instructions.md.
+# Commands that search files: summarize, explain
+# Commands that use your input directly: steps, draft, next
 #
+# This script outputs a ready-to-paste prompt for Claude Project.
 # No API keys. No external services. No backend.
 
 set -euo pipefail
@@ -26,11 +26,11 @@ query="${2:-}"
 if [ -z "$action" ] || [ -z "$query" ]; then
   echo "Usage: $0 {summarize|steps|draft|explain|next} \"query\""
   echo ""
-  echo "  summarize \"topic\"   — find relevant docs and summarise"
-  echo "  steps     \"brief\"   — turn a brief into next steps"
-  echo "  draft     \"files\"   — draft submission note from file changes"
-  echo "  explain   \"concept\" — explain concept from my docs"
-  echo "  next      \"status\"  — what to do next based on current state"
+  echo "  summarize \"topic\"   — search docs, output prompt to summarise"
+  echo "  steps     \"brief\"   — output prompt to turn your brief into steps"
+  echo "  draft     \"changes\" — output prompt to draft submission note"
+  echo "  explain   \"concept\" — search docs, output prompt to explain"
+  echo "  next      \"status\"  — output prompt for what to do next"
   exit 1
 fi
 
@@ -39,110 +39,127 @@ echo "Action: $action"
 echo "Query: $query"
 echo ""
 
-# ──────────────────────────────────────────────────
 # Read example brief if present
-# ──────────────────────────────────────────────────
+BRIEF_TEXT=""
 if [ -f "$INPUTS_DIR/example-brief.md" ]; then
-  echo "--- Reading brief from inputs ---"
-  cat "$INPUTS_DIR/example-brief.md"
-  echo ""
-  echo "--- End of brief ---"
-  echo ""
+  BRIEF_TEXT="$(cat "$INPUTS_DIR/example-brief.md")"
 fi
 
-# ──────────────────────────────────────────────────
-# Find relevant files using grep
-# ──────────────────────────────────────────────────
-echo "--- Searching assignment files for: $query ---"
-echo ""
-
-# Build a list of relevant files sorted by relevance (match count)
-matches=$(mktemp)
-for f in "$ASSIGNMENTS_DIR"/week-0*/*.md "$ASSIGNMENTS_DIR"/week-0*/*/*.md; do
-  if [ -f "$f" ]; then
-    count=$(grep -ic "$query" "$f" 2>/dev/null || true)
-    if [ "$count" -gt 0 ]; then
-      echo "$count $f" >> "$matches"
+# ── Commands that search the filesystem ──
+if [ "$action" = "summarize" ] || [ "$action" = "explain" ]; then
+  matches=$(mktemp)
+  for f in "$ASSIGNMENTS_DIR"/week-0*/*.md "$ASSIGNMENTS_DIR"/week-0*/*/*.md; do
+    if [ -f "$f" ]; then
+      count=$(grep -ic "$query" "$f" 2>/dev/null || true)
+      if [ "$count" -gt 0 ]; then
+        echo "$count $f" >> "$matches"
+      fi
     fi
+  done
+
+  if [ ! -s "$matches" ]; then
+    echo "No documents found containing \"$query\"."
+    echo ""
+    echo "I do not have that in your documents."
+    echo "Available docs cover: workflow, MCP, validation, settings,"
+    echo "identity kit, through-line, case studies, deployment."
+    rm "$matches"
+    exit 0
   fi
-done
 
-if [ ! -s "$matches" ]; then
-  echo "No documents found containing \"$query\"."
-  echo ""
-  echo "Documented gap: I do not have that in your documents."
-  echo "Available docs cover: workflow, MCP, validation, settings,"
-  echo "identity kit, through-line, case studies, deployment."
-  echo ""
-  rm "$matches"
-  exit 0
-fi
-
-# Sort by relevance (highest match count first)
-sort -rn "$matches" | head -10 | while read -r count file; do
-  relpath="${file#$REPO_ROOT/}"
-  echo "  [$count matches] $relpath"
-done
-
-echo ""
-
-# ──────────────────────────────────────────────────
-# Show top 3 most relevant files with excerpts
-# ──────────────────────────────────────────────────
-echo "--- Top sources ---"
-echo ""
-
-sort -rn "$matches" | head -3 | while read -r count file; do
-  relpath="${file#$REPO_ROOT/}"
-  echo "Source: $relpath ($count matches)"
-
-  # Show first matching lines (up to 10)
-  grep -in "$query" "$file" 2>/dev/null | head -10 | while read -r line; do
-    echo "  > $line"
+  echo "--- Sources found ---"
+  sort -rn "$matches" | head -10 | while read -r count file; do
+    relpath="${file#$REPO_ROOT/}"
+    echo "  [$count matches] $relpath"
   done
   echo ""
-done
 
-rm "$matches"
+  # Build document list (top 5)
+  doc_list=""
+  for f in "$ASSIGNMENTS_DIR"/week-0*/*.md "$ASSIGNMENTS_DIR"/week-0*/*/*.md; do
+    if [ -f "$f" ]; then
+      count=$(grep -ic "$query" "$f" 2>/dev/null || true)
+      if [ "$count" -gt 0 ]; then
+        relpath="${f#$REPO_ROOT/}"
+        doc_list="$doc_list- $relpath"$'\n'
+      fi
+    fi
+  done
+  doc_list="$(echo "$doc_list" | head -5)"
+  rm "$matches"
+fi
 
-# ──────────────────────────────────────────────────
-# Action-specific output
-# ──────────────────────────────────────────────────
-echo "--- Prepared context ---"
-echo ""
-echo "Action: $action"
-echo "Query: $query"
-echo ""
-echo "Documents identified: see above"
+echo "=== PROMPT FOR CLAUDE PROJECT ==="
+echo "Paste this into Claude Project:"
 echo ""
 
 case "$action" in
   summarize)
-    echo "Next step: Upload the 3 most relevant docs above to Claude Project."
-    echo "Then ask: \"Summarise what I wrote about '$query' in these documents.\""
-    echo "The agent will produce a structured summary with source citations."
+    echo "I am working on: [assignment title]"
+    echo ""
+    echo "Documents loaded in this session:"
+    echo "$doc_list"
+    echo ""
+    if [ -n "$BRIEF_TEXT" ]; then
+      echo "Here is the assignment brief:"
+      echo "$BRIEF_TEXT"
+      echo ""
+    fi
+    echo "Read the assignment brief above and the loaded documents."
+    echo "Summarise what I have already written that is relevant."
+    echo "Include:"
+    echo "1. What the assignment asks for"
+    echo "2. What my existing docs cover (with file names)"
+    echo "3. What gaps exist"
     ;;
+
   steps)
-    echo "Next step: Open Claude Project with instructions loaded."
-    echo "Paste the brief and ask: \"Turn this into next steps, referencing my past assignment structures.\""
-    echo "The agent will output an ordered checklist."
+    echo "I am working on: $query"
+    echo ""
+    if [ -n "$BRIEF_TEXT" ]; then
+      echo "Here is the assignment brief:"
+      echo "$BRIEF_TEXT"
+      echo ""
+    fi
+    echo "Read the assignment brief above. Then output a checklist"
+    echo "of concrete next steps. For each step, reference which past"
+    echo "document or pattern I should follow. Order by dependency."
     ;;
+
   draft)
-    echo "Next step: Open Claude Project and paste the completed file list."
-    echo "Ask: \"Draft a submission note in my voice for these changes.\""
-    echo "The agent will produce a 3-5 sentence note matching my past style."
+    echo "I am working on: [assignment title]"
+    echo ""
+    echo "Files changed: $query"
+    echo ""
+    echo "Draft a 3-5 sentence submission note in my voice:"
+    echo "- Direct and practical"
+    echo "- First person"
+    echo "- States what was created"
+    echo "- Mentions any decisions or trade-offs"
+    echo "- No filler"
     ;;
+
   explain)
-    echo "Next step: Find which documents above contain '$query'."
-    echo "If the concept exists in my docs, open Claude Project and ask:"
-    echo "\"Explain '$query' using ONLY what I wrote in my documents.\""
-    echo "If not found: I do not have that in your documents."
+    echo "I am working on: [assignment title]"
+    echo ""
+    echo "Documents loaded in this session:"
+    echo "$doc_list"
+    echo ""
+    echo "Explain '$query' using ONLY what I wrote in my own"
+    echo "documents. Use the most detailed source available."
+    echo "If I did not write about it, say so."
     ;;
+
   next)
-    echo "Next step: Review the current repo state (git status) and compare"
-    echo "against the assignment deliverables list. Open Claude Project and"
-    echo "ask: \"Based on what is done and what is missing, what should I do next?\""
-    echo "The agent will produce a dependency-ordered checklist."
+    echo "Just finished: $query"
+    echo ""
+    if [ -n "$BRIEF_TEXT" ]; then
+      echo "The assignment asks for:"
+      echo "$BRIEF_TEXT"
+      echo ""
+    fi
+    echo "Based on what is done and what the assignment asks for,"
+    echo "what should I do next? Output a dependency-ordered checklist."
     ;;
 esac
 

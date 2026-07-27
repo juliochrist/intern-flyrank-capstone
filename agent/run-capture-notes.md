@@ -2,47 +2,52 @@
 
 ## Goal
 
-Capture a 2-minute demo showing the study coach agent handling one real workflow: reading assignment docs and producing a structured summary.
+Capture a 2-minute demo showing the study coach agent completing one real end-to-end workflow: reading local assignment files and outputting a ready-to-paste prompt for Claude Project.
 
 ---
 
 ## What the Run Should Show
 
-1. Open the agent workspace — show `agent/` directory structure
-2. Run the demo script with a sample query
-3. Show the script reading local markdown files and extracting relevant content
-4. Show the prepared context output — the prompt that would go into Claude Project
-5. Close by showing the FL-07 submission doc
+1. Show `agent/` directory structure
+2. Run `./agent/demo.sh summarize "workflow"` — finds real files, outputs prompt
+3. Run `./agent/demo.sh steps "FL-07: Build the agent"` — outputs prompt with brief
+4. Run `./agent/demo.sh explain "cross-field validation"` — finds concept docs
+5. Run `./agent/demo.sh summarize "netlify"` — shows the gap-handling path
+6. Open `agent/instructions.md` to show the system prompt that goes into Claude Project
+7. Close by showing `agent/build-log.md` to document what was cut and why
 
 ---
 
 ## Script Walkthrough
 
 ```bash
-# Show the agent workspace
+# 1. Show the workspace
 ls -la agent/
 
-# Show the demo script
-cat agent/demo.sh
-
-# Run the demo — summarise what I wrote about workflows
+# 2. Summarise — searches files and outputs ready-to-paste prompt
 ./agent/demo.sh summarize "workflow"
 
-# Run another — turn a brief into next steps
-./agent/demo.sh steps "build a personal agent"
+# 3. Steps — outputs prompt with brief for next-steps generation
+./agent/demo.sh steps "FL-07: Build the agent"
 
-# Run the explain case
+# 4. Explain — searches and outputs explain prompt
 ./agent/demo.sh explain "cross-field validation"
+
+# 5. Gap handling — shows the no-doc response
+./agent/demo.sh summarize "netlify deployment"
+
+# 6. Show the instructions that live in Claude Project
+cat agent/instructions.md
 ```
 
 ---
 
 ## What the Reviewer Should See
 
-- The demo script finds real files from the repo (not fake data)
-- Output includes file names and relevant excerpts
-- The script documents which sources it used
-- The output ends with open questions (matching the agent output format)
+- The script reads real files from the repo (verified by file paths in output)
+- All 5 action types produce usable prompts
+- The gap case ("netlify") shows the honest "not in your documents" response
+- The instructions.md contains the full system prompt that runs in Claude Project
 
 ---
 
@@ -54,26 +59,37 @@ $ ./agent/demo.sh summarize "workflow"
 Action: summarize
 Query: workflow
 
-Reading from agent/inputs/example-brief.md...
-Reading from assignments/week-04/workflow-as-a-service.md...
-Reading from assignments/week-04/agent-and-mcp.md...
+--- Sources found ---
+  [13 matches] assignments/week-04/workflow-as-a-service.md
+  [12 matches] assignments/week-04/agent-and-mcp.md
+  ...
 
-=== SOURCES FOUND ===
-1. assignments/week-04/workflow-as-a-service.md (lines 1-315)
-2. assignments/week-04/agent-and-mcp.md (lines 1-205)
+=== PROMPT FOR CLAUDE PROJECT ===
+Paste this into Claude Project:
 
-=== PREPARED CONTEXT ===
-{structured summary of what I wrote about workflows}
+I am working on: [assignment title]
 
-=== OPEN QUESTIONS ===
-{1-3 questions}
+Documents loaded in this session:
+- assignments/week-01/workflow-audit.md
+- assignments/week-03/through-line.md
+...
+
+Read the assignment brief above and the loaded documents.
+Summarise what I have already written that is relevant.
+...
+[end of prompt]
+
+=== End of demo ===
 ```
 
 ---
 
 ## What to Narrate During Capture
 
-- "The agent reads from my actual assignment files — no fake data."
-- "It collects the relevant sections and prepares them as context."
-- "In production, this context goes into Claude Project where the agent processes it and returns the summary."
-- "The demo shows the filesystem connector working. The reasoning step happens in Claude Project."
+- "The script reads from my actual assignment files — verified by the match counts and file paths."
+- "It outputs a complete prompt ready to paste into Claude Project."
+- "The prompt includes the document list, the brief, and the task-specific instructions."
+- "The user copies this prompt, pastes it into Claude Project, and the agent responds."
+- "That is the end-to-end run: filesystem read → prompt preparation → Claude Project reasoning."
+- "The gap case proves the agent does not fabricate — if a topic is not in the docs, it says so."
+- "The instructions.md is the configuration that lives inside Claude Project — it is not a simulation."
