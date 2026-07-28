@@ -55,6 +55,7 @@
 - [FL-06: Design Your Personal Agent](assignments/week-05/fl-06-personal-agent.md)
 - [FL-07: Build the Agent](assignments/week-05/fl-07-build-agent.md)
 - [FE-08: Error States, Empty States, and Edge Cases](assignments/week-05/fe-08-error-states.md)
+- [PF-04: Personal Website Live on the FlyRank Domain](assignments/week-05/pf-04-personal-website.md)
 - [Deployment Checklist](assignments/week-05/deployment-checklist.md)
 
 ### Agent Workspace
@@ -101,6 +102,7 @@
 - ✅ FL-06: Design Your Personal Agent
 - ✅ FL-07: Build the Agent
 - ✅ FE-08: Error States, Empty States, and Edge Cases
+- ✅ PF-04: Personal Website Live on the FlyRank Domain
 - ✅ Deployment Checklist
 
 ### Checkpoint 1

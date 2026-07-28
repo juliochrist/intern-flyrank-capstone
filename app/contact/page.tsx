@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mail, Globe, BriefcaseBusiness } from "lucide-react";
+import { Mail, Globe, BriefcaseBusiness, FileText, Calendar } from "lucide-react";
 import Container from "../../components/Container";
 import Card from "../../components/Card";
 import Section from "../../components/Section";
@@ -73,6 +73,32 @@ export default function ContactPage() {
               >
                 github.com/juliochrist/intern-flyrank-capstone
               </a>
+            </p>
+          </Card>
+          <Card>
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
+              <FileText className="h-5 w-5" />
+            </div>
+            <h2 className="mt-4 text-lg font-semibold text-foreground">
+              CV / Resume
+            </h2>
+            <p className="mt-2 text-sm text-muted">
+              <span className="text-muted-foreground">
+                Coming soon
+              </span>
+            </p>
+          </Card>
+          <Card>
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20">
+              <Calendar className="h-5 w-5" />
+            </div>
+            <h2 className="mt-4 text-lg font-semibold text-foreground">
+              Book a Call
+            </h2>
+            <p className="mt-2 text-sm text-muted">
+              <span className="text-muted-foreground">
+                Booking link coming soon
+              </span>
             </p>
           </Card>
         </div>

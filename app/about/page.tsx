@@ -38,7 +38,7 @@ export default function AboutPage() {
             </p>
           </Card>
 
-          <div>
+          <div id="experience">
             <h2 className="text-xl font-semibold text-foreground">
               Experience
             </h2>
