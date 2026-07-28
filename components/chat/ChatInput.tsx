@@ -1,8 +1,10 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useEffect } from "react";
 
 interface ChatInputProps {
+  input: string;
+  onInputChange: (value: string) => void;
   onSend: (message: string) => void;
   onStop: () => void;
   onRegenerate: () => void;
@@ -11,31 +13,37 @@ interface ChatInputProps {
 }
 
 export function ChatInput({
+  input,
+  onInputChange,
   onSend,
   onStop,
   onRegenerate,
   status,
   hasMessages,
 }: ChatInputProps) {
-  const [input, setInput] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const isBusy = status === "submitted" || status === "streaming";
+  const isEmpty = !input.trim();
+
+  useEffect(() => {
+    if (!isBusy && textareaRef.current) {
+      textareaRef.current.focus();
+    }
+  }, [isBusy]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (input.trim() && !isBusy) {
-      onSend(input.trim());
-      setInput("");
-    }
+    if (isEmpty || isBusy) return;
+    onSend(input.trim());
+    onInputChange("");
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
-      if (input.trim() && !isBusy) {
-        onSend(input.trim());
-        setInput("");
-      }
+      if (isEmpty || isBusy) return;
+      onSend(input.trim());
+      onInputChange("");
     }
   };
 
@@ -49,7 +57,7 @@ export function ChatInput({
           <textarea
             ref={textareaRef}
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e) => onInputChange(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Ask anything..."
             rows={1}
@@ -89,13 +97,17 @@ export function ChatInput({
           ) : (
             <button
               type="submit"
-              disabled={!input.trim() || isBusy}
+              disabled={isEmpty || isBusy}
               aria-label="Send message"
               className="inline-flex items-center justify-center rounded-xl px-4 py-3 text-sm font-medium text-white transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0"
               style={{
                 background:
-                  "linear-gradient(135deg, #6c63ff 0%, #5a52e0 100%)",
-                boxShadow: "0 4px 16px rgba(108,99,255,0.3)",
+                  isEmpty
+                    ? "rgba(255,255,255,0.1)"
+                    : "linear-gradient(135deg, #6c63ff 0%, #5a52e0 100%)",
+                boxShadow: isEmpty
+                  ? "none"
+                  : "0 4px 16px rgba(108,99,255,0.3)",
               }}
             >
               <svg

@@ -54,6 +54,7 @@
 - [Ship the Ugly One](assignments/week-05/ship-the-ugly-one.md)
 - [FL-06: Design Your Personal Agent](assignments/week-05/fl-06-personal-agent.md)
 - [FL-07: Build the Agent](assignments/week-05/fl-07-build-agent.md)
+- [FE-08: Error States, Empty States, and Edge Cases](assignments/week-05/fe-08-error-states.md)
 - [Deployment Checklist](assignments/week-05/deployment-checklist.md)
 
 ### Agent Workspace
@@ -93,3 +94,15 @@
 - ✅ Three Roads
 - ✅ Workflow as a Service
 - ✅ Agentic Systems & MCP
+
+### Week 5
+
+- ✅ Ship the Ugly One
+- ✅ FL-06: Design Your Personal Agent
+- ✅ FL-07: Build the Agent
+- ✅ FE-08: Error States, Empty States, and Edge Cases
+- ✅ Deployment Checklist
+
+### Checkpoint 1
+
+- ✅ AI Chat is production-ready with proper error, loading, and empty states

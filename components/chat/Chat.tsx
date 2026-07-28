@@ -1,31 +1,81 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { ChatMessage } from "./ChatMessage";
 import { ChatInput } from "./ChatInput";
-import { ThinkingIndicator } from "./ThinkingIndicator";
+import { ChatEmptyState } from "./ChatEmptyState";
+import { ChatErrorBanner } from "./ChatErrorBanner";
+import { ChatSkeleton } from "./ChatSkeleton";
 import { ScrollToBottom } from "./ScrollToBottom";
+import { sabotage } from "../../lib/sabotage";
 
 export function Chat() {
+  const [input, setInput] = useState("");
+  const [dismissedError, setDismissedError] = useState(false);
+
   const { messages, sendMessage, stop, status, error, regenerate } = useChat({
     transport: new DefaultChatTransport({ api: "/api/chat" }),
   });
+
+  useEffect(() => {
+    sabotage.patch();
+    return () => sabotage.unpatch();
+  }, []);
+
+  useEffect(() => {
+    if (error) {
+      setDismissedError(false);
+    }
+  }, [error]);
 
   const hasMessages = messages.length > 0;
   const lastMessage = messages[messages.length - 1];
   const isBusy = status === "submitted" || status === "streaming";
   const hasTextContent = (msg: typeof lastMessage) =>
-    msg?.parts?.some((p) => p.type === "text" && (p as { type: "text"; text: string }).text.length > 0);
+    msg?.parts?.some(
+      (p) => p.type === "text" && (p as { type: "text"; text: string }).text.length > 0,
+    );
   const isWaitingForFirstToken =
     status === "submitted" ||
     (status === "streaming" && lastMessage?.role === "assistant" && !hasTextContent(lastMessage));
 
+  const finishedButEmpty =
+    status === "ready" &&
+    lastMessage?.role === "assistant" &&
+    hasMessages &&
+    !hasTextContent(lastMessage);
+
+  const showError = error && !dismissedError;
+
+  const handleExampleClick = (prompt: string) => {
+    setInput(prompt);
+  };
+
+  const handleRetry = () => {
+    regenerate();
+  };
+
+  const handleDismissError = () => {
+    setDismissedError(true);
+  };
+
+  const handleSend = (message: string) => {
+    sendMessage({ text: message });
+  };
+
   return (
     <div className="flex h-full flex-col">
-      {hasMessages ? (
+      {!hasMessages && !showError ? (
+        <ChatEmptyState onExampleClick={handleExampleClick} />
+      ) : (
         <ScrollToBottom isStreaming={isBusy}>
-          <div className="mx-auto max-w-3xl space-y-4" role="log" aria-label="Chat messages">
+          <div
+            className="mx-auto max-w-3xl space-y-4"
+            role="log"
+            aria-label="Chat messages"
+          >
             {messages.map((message) => (
               <ChatMessage
                 key={message.id}
@@ -37,52 +87,49 @@ export function Chat() {
                 }
               />
             ))}
-            <ThinkingIndicator visible={!!isWaitingForFirstToken} />
+            <ChatSkeleton visible={!!isWaitingForFirstToken} />
+            {finishedButEmpty && (
+              <div
+                className="flex items-start justify-start"
+                role="status"
+                aria-live="polite"
+              >
+                <div
+                  className="rounded-2xl px-5 py-4 text-sm"
+                  style={{
+                    background: "rgba(255,255,255,0.03)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                  }}
+                >
+                  <p className="font-medium text-[#f1f5f9]">
+                    No response generated
+                  </p>
+                  <p className="mt-1 text-xs text-[#64748b]">
+                    The assistant didn&apos;t produce a response. Try rewording
+                    your prompt or asking a different question.
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
         </ScrollToBottom>
-      ) : (
-        <div className="flex flex-1 items-center justify-center px-4">
-          <div className="text-center">
-            <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[rgba(108,99,255,0.1)] ring-1 ring-[rgba(108,99,255,0.2)]">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#6c63ff"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-              </svg>
-            </div>
-            <h2 className="text-lg font-semibold text-[#f1f5f9]">
-              AI Chat
-            </h2>
-            <p className="mt-1 text-sm text-[#64748b]">
-              Ask me anything about frontend engineering.
-            </p>
-          </div>
-        </div>
       )}
 
-      {error && (
-        <div
-          role="alert"
-          className="mx-auto mb-2 max-w-3xl rounded-xl bg-error/10 px-4 py-2 text-xs text-error"
-          style={{ border: "1px solid rgba(239,68,68,0.2)" }}
-        >
-          {error.message || "An error occurred. Please try again."}
-        </div>
+      {showError && (
+        <ChatErrorBanner
+          error={error}
+          onRetry={handleRetry}
+          isRetrying={isBusy}
+          onDismiss={handleDismissError}
+        />
       )}
 
       <ChatInput
-        onSend={(message) => sendMessage({ text: message })}
+        input={input}
+        onInputChange={setInput}
+        onSend={handleSend}
         onStop={stop}
-        onRegenerate={regenerate}
+        onRegenerate={() => regenerate()}
         status={status}
         hasMessages={hasMessages}
       />
