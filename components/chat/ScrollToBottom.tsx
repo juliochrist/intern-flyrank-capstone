@@ -77,9 +77,9 @@ export function ScrollToBottom({ children, isStreaming }: ScrollToBottomProps) {
           <button
             type="button"
             onClick={jumpToLatest}
-            className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium text-[#f1f5f9] shadow-lg transition hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium text-foreground shadow-lg transition hover:-translate-y-0.5"
             style={{
-              background: "rgba(108,99,255,0.9)",
+              background: "rgba(124,106,255,0.9)",
               backdropFilter: "blur(12px)",
               WebkitBackdropFilter: "blur(12px)",
               border: "1px solid rgba(255,255,255,0.15)",

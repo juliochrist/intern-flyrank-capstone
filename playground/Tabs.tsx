@@ -208,10 +208,10 @@ export function TabsTab({ value, children, disabled = false, className = "" }: T
       disabled={disabled}
       onClick={() => onValueChange(value)}
       onKeyDown={handleKeyDown}
-      className={`px-4 py-2 text-sm font-medium transition focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#6c63ff] ${
+      className={`px-4 py-2 text-sm font-medium transition focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-primary ${
         isSelected
-          ? "border-b-2 border-[#6c63ff] text-[#f1f5f9]"
-          : "border-b-2 border-transparent text-[#64748b] hover:border-[rgba(108,99,255,0.3)] hover:text-[#94a3b8]"
+          ? "border-b-2 border-primary text-foreground"
+          : "border-b-2 border-transparent text-muted-foreground hover:border-primary/30 hover:text-muted"
       } ${disabled ? "cursor-not-allowed opacity-40" : "cursor-pointer"} ${className}`}
     >
       {children}
@@ -240,7 +240,7 @@ export function TabsPanel({ value, children, className = "" }: TabsPanelProps) {
       id={panelId}
       aria-labelledby={tabId}
       tabIndex={0}
-      className={`mt-4 text-sm leading-relaxed text-[#cbd5e1] outline-none ${className}`}
+      className={`mt-4 text-sm leading-relaxed text-[#D0D0E0] outline-none ${className}`}
     >
       {children}
     </div>

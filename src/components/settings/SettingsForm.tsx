@@ -78,7 +78,13 @@ export function SettingsForm() {
         />
       </FormField>
 
-      <fieldset className="space-y-5 rounded-xl border border-glass-border bg-glass-bg p-4">
+      <fieldset
+        className="space-y-5 rounded-xl p-4"
+        style={{
+          background: "rgba(35,33,44,0.4)",
+          border: "1px solid rgba(255,255,255,0.06)",
+        }}
+      >
         <legend className="px-1 text-sm font-medium text-foreground/80">
           Change password
         </legend>

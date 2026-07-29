@@ -20,7 +20,16 @@ export default function SettingsPage() {
           </p>
         </header>
 
-        <div className="glass-card rounded-2xl p-6 sm:p-8">
+        <div
+          className="rounded-2xl p-6 sm:p-8"
+          style={{
+            background: "rgba(35,33,44,0.35)",
+            backdropFilter: "blur(20px)",
+            WebkitBackdropFilter: "blur(20px)",
+            border: "1px solid rgba(255,255,255,0.08)",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
+          }}
+        >
           <SettingsForm />
         </div>
       </div>

@@ -31,23 +31,22 @@ export default function Navbar() {
     <header
       className="sticky top-0 z-50"
       style={{
-        background: "rgba(10,10,15,0.6)",
-        backdropFilter: "blur(20px)",
-        WebkitBackdropFilter: "blur(20px)",
-        borderBottom: "1px solid rgba(255,255,255,0.08)",
+        background: "rgba(35,33,44,0.7)",
+        backdropFilter: "blur(24px)",
+        WebkitBackdropFilter: "blur(24px)",
+        borderBottom: "1px solid rgba(255,255,255,0.06)",
       }}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="flex items-center gap-2 text-sm font-semibold text-[#f1f5f9]"
+          className="flex items-center gap-2 text-sm font-semibold text-foreground"
         >
-          <Sparkles className="h-4 w-4 text-[#6c63ff]" />
+          <Sparkles className="h-4 w-4 text-primary" />
           FlyRank
         </Link>
 
-        {/* Desktop nav */}
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul className="hidden items-center gap-1 md:flex">
           {links.map((link) => {
             const active = isActive(link.href);
             return (
@@ -56,8 +55,8 @@ export default function Navbar() {
                   href={link.href}
                   className={
                     active
-                      ? "inline-flex items-center rounded-full bg-[rgba(99,102,241,0.15)] px-4 py-1.5 text-sm font-medium text-[#6c63ff] ring-1 ring-inset ring-[rgba(99,102,241,0.25)] transition hover:bg-[rgba(99,102,241,0.2)] hover:ring-[rgba(99,102,241,0.35)]"
-                      : "inline-flex items-center px-1 py-1.5 text-sm font-medium text-[#94a3b8] transition hover:text-[#f1f5f9]"
+                      ? "inline-flex items-center rounded-full bg-primary/15 px-3.5 py-1.5 text-sm font-medium text-primary ring-1 ring-inset ring-primary/25 transition hover:bg-primary/20 hover:ring-primary/35"
+                      : "inline-flex items-center rounded-full px-3.5 py-1.5 text-sm font-medium text-muted transition hover:bg-white/5 hover:text-foreground"
                   }
                 >
                   {link.label}
@@ -67,10 +66,9 @@ export default function Navbar() {
           })}
         </ul>
 
-        {/* Mobile hamburger */}
         <button
           type="button"
-          className="flex items-center justify-center p-2 text-[#94a3b8] hover:text-[#f1f5f9] md:hidden"
+          className="flex items-center justify-center p-2 text-muted hover:text-foreground md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
@@ -83,11 +81,10 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Mobile menu */}
       {mobileOpen && (
         <div
           className="border-t md:hidden"
-          style={{ borderColor: "rgba(255,255,255,0.08)" }}
+          style={{ borderColor: "rgba(255,255,255,0.06)" }}
         >
           <ul className="flex flex-col gap-1 px-4 pb-4 pt-2">
             {links.map((link) => {
@@ -99,8 +96,8 @@ export default function Navbar() {
                     onClick={() => setMobileOpen(false)}
                     className={`block rounded-lg px-3 py-2 text-sm font-medium transition ${
                       active
-                        ? "bg-[rgba(99,102,241,0.15)] text-[#6c63ff]"
-                        : "text-[#94a3b8] hover:bg-[rgba(255,255,255,0.05)] hover:text-[#f1f5f9]"
+                        ? "bg-primary/15 text-primary"
+                        : "text-muted hover:bg-white/5 hover:text-foreground"
                     }`}
                   >
                     {link.label}

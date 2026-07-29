@@ -66,44 +66,44 @@ function GlassCard({
 }) {
   return (
     <div
-      className="group relative flex h-full flex-col overflow-hidden rounded-2xl p-6 transition-all duration-250 hover:-translate-y-0.5 sm:p-8"
+      className="group relative flex h-full flex-col overflow-hidden rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 sm:p-8"
       style={{
-        background: "rgba(255,255,255,0.05)",
-        backdropFilter: "blur(16px)",
-        WebkitBackdropFilter: "blur(16px)",
-        border: "1px solid rgba(255,255,255,0.1)",
-        boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+        background: "rgba(35,33,44,0.35)",
+        backdropFilter: "blur(20px)",
+        WebkitBackdropFilter: "blur(20px)",
+        border: "1px solid rgba(255,255,255,0.08)",
+        boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = "rgba(255,255,255,0.2)";
+        e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)";
         e.currentTarget.style.boxShadow =
-          "0 8px 32px rgba(0,0,0,0.3), 0 0 32px rgba(108,99,255,0.12)";
+          "0 8px 32px rgba(0,0,0,0.4), 0 0 30px rgba(124,106,255,0.1)";
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)";
-        e.currentTarget.style.boxShadow = "0 8px 32px rgba(0,0,0,0.3)";
+        e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
+        e.currentTarget.style.boxShadow = "0 8px 32px rgba(0,0,0,0.4)";
       }}
     >
       <div
         className="pointer-events-none absolute left-0 right-0 top-0 h-px"
         style={{
           background:
-            "linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent)",
+            "linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent)",
         }}
       />
 
       <div
-        className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl transition group-hover:bg-[rgba(99,102,241,0.2)] group-hover:ring-[rgba(99,102,241,0.35)]"
+        className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl transition group-hover:bg-primary/20 group-hover:ring-primary/35"
         style={{
-          background: "rgba(99,102,241,0.1)",
-          color: "#6c63ff",
-          boxShadow: "0 0 0 1px rgba(99,102,241,0.2)",
+          background: "rgba(124,106,255,0.15)",
+          color: "#7C6AFF",
+          boxShadow: "0 0 0 1px rgba(124,106,255,0.25)",
         }}
       >
         <Icon className="h-5 w-5" />
       </div>
-      <h3 className="mb-2 text-lg font-semibold text-[#f1f5f9]">{title}</h3>
-      <p className="flex-1 text-sm leading-relaxed text-[#94a3b8]">
+      <h3 className="mb-2 text-lg font-semibold text-foreground">{title}</h3>
+      <p className="flex-1 text-sm leading-relaxed text-muted">
         {description}
       </p>
     </div>
@@ -114,9 +114,38 @@ export default function HomePage() {
   return (
     <>
       <section className="relative overflow-hidden pb-16 pt-20 sm:pb-24 sm:pt-28">
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+          <div
+            className="absolute"
+            style={{
+              width: "600px",
+              height: "600px",
+              background:
+                "radial-gradient(circle, rgba(124,106,255,0.12) 0%, transparent 60%)",
+              filter: "blur(80px)",
+              top: "-200px",
+              right: "-100px",
+              animation: "nebula-drift 20s ease-in-out infinite",
+            }}
+          />
+          <div
+            className="absolute"
+            style={{
+              width: "400px",
+              height: "400px",
+              background:
+                "radial-gradient(circle, rgba(107,138,255,0.08) 0%, transparent 60%)",
+              filter: "blur(60px)",
+              bottom: "-100px",
+              left: "-50px",
+              animation: "nebula-drift-2 25s ease-in-out infinite reverse",
+            }}
+          />
+        </div>
+
         <Container>
           <motion.div
-            className="mx-auto max-w-3xl text-center"
+            className="mx-auto max-w-4xl text-center"
             initial="initial"
             animate="animate"
             variants={{
@@ -126,16 +155,18 @@ export default function HomePage() {
             <motion.p
               variants={fadeUp}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="mb-4 inline-flex items-center gap-1.5 rounded-full px-4 py-1 text-xs font-medium tracking-wide uppercase"
+              className="mb-6 inline-flex items-center gap-1.5 rounded-full px-4 py-1 text-xs font-medium tracking-wide uppercase"
               style={{
-                border: "1px solid rgba(255,255,255,0.1)",
-                background: "rgba(255,255,255,0.05)",
-                color: "#94a3b8",
+                border: "1px solid rgba(255,255,255,0.08)",
+                background: "rgba(35,33,44,0.35)",
+                backdropFilter: "blur(16px)",
+                WebkitBackdropFilter: "blur(16px)",
+                color: "#A0A0B8",
               }}
             >
               <span
                 className="h-1.5 w-1.5 rounded-full"
-                style={{ background: "#6c63ff" }}
+                style={{ background: "#7C6AFF", boxShadow: "0 0 6px rgba(124,106,255,0.6)" }}
               />
               AI Frontend Engineering Capstone
             </motion.p>
@@ -143,11 +174,11 @@ export default function HomePage() {
             <motion.h1
               variants={fadeUp}
               transition={{ duration: 0.6, ease: "easeOut" }}
-              className="text-4xl font-bold leading-[1.1] tracking-[-0.03em] text-[#f1f5f9] sm:text-5xl md:text-6xl lg:text-7xl"
+              className="text-4xl font-bold leading-[1.1] tracking-[-0.03em] text-foreground sm:text-5xl md:text-6xl lg:text-7xl"
             >
               AI-powered{" "}
               <span
-                className="bg-gradient-to-r from-[#6c63ff] to-[#22d3ee] bg-clip-text text-transparent"
+                className="bg-gradient-to-r from-[#7C6AFF] to-[#6B8AFF] bg-clip-text text-transparent"
               >
                 web applications
               </span>
@@ -158,7 +189,7 @@ export default function HomePage() {
             <motion.p
               variants={fadeUp}
               transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
-              className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[#94a3b8] sm:text-lg"
+              className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg"
             >
               I build fast, accessible web applications with modern frontend
               tools and AI-assisted workflows — turning real requirements into
@@ -174,21 +205,20 @@ export default function HomePage() {
                 href="/projects"
                 className="inline-flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5"
                 style={{
-                  background:
-                    "linear-gradient(135deg, #6c63ff 0%, #5a52e0 100%)",
-                  boxShadow: "0 4px 16px rgba(108,99,255,0.3)",
+                  background: "linear-gradient(135deg, #7C6AFF 0%, #6A58E8 100%)",
+                  boxShadow: "0 4px 20px rgba(124,106,255,0.35)",
                 }}
               >
                 View My Projects
               </Link>
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-semibold text-[#f1f5f9] transition-all duration-200 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-semibold text-foreground transition-all duration-200 hover:-translate-y-0.5"
                 style={{
-                  background: "rgba(255,255,255,0.05)",
+                  background: "rgba(35,33,44,0.35)",
                   backdropFilter: "blur(16px)",
                   WebkitBackdropFilter: "blur(16px)",
-                  border: "1px solid rgba(255,255,255,0.1)",
+                  border: "1px solid rgba(255,255,255,0.08)",
                 }}
               >
                 See My Work
@@ -226,7 +256,7 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <section className="border-t border-[rgba(255,255,255,0.08)] pb-20 pt-16 sm:pb-28 sm:pt-24">
+      <section className="border-t pb-20 pt-16 sm:pb-28 sm:pt-24" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
         <Container>
           <motion.div
             initial={{ opacity: 0, y: 32 }}
@@ -235,7 +265,7 @@ export default function HomePage() {
             variants={{ animate: { opacity: 1, y: 0 } }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            <h2 className="text-2xl font-bold tracking-tight text-[#f1f5f9] sm:text-3xl">
+            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
               Featured Projects
             </h2>
             <p className="mt-2 text-muted">
@@ -254,26 +284,26 @@ export default function HomePage() {
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
               >
                 <div
-                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl p-6 transition-all duration-250 hover:-translate-y-0.5 sm:p-8"
+                  className="group relative flex h-full flex-col overflow-hidden rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 sm:p-8"
                   style={{
-                    background: "rgba(255,255,255,0.05)",
-                    backdropFilter: "blur(16px)",
-                    WebkitBackdropFilter: "blur(16px)",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                    boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+                    background: "rgba(35,33,44,0.35)",
+                    backdropFilter: "blur(20px)",
+                    WebkitBackdropFilter: "blur(20px)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
                   }}
                 >
                   <div
                     className="pointer-events-none absolute left-0 right-0 top-0 h-px"
                     style={{
                       background:
-                        "linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent)",
+                        "linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent)",
                     }}
                   />
-                  <h3 className="text-lg font-semibold text-[#f1f5f9]">
+                  <h3 className="text-lg font-semibold text-foreground">
                     {project.title}
                   </h3>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-[#94a3b8]">
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
                     {project.description}
                   </p>
                   <div className="mt-4 flex flex-wrap gap-1.5">
@@ -282,9 +312,9 @@ export default function HomePage() {
                         key={t}
                         className="rounded-full px-2.5 py-0.5 text-[10px] font-medium"
                         style={{
-                          background: "rgba(99,102,241,0.1)",
-                          color: "#6c63ff",
-                          border: "1px solid rgba(99,102,241,0.2)",
+                          background: "rgba(124,106,255,0.15)",
+                          color: "#7C6AFF",
+                          border: "1px solid rgba(124,106,255,0.25)",
                         }}
                       >
                         {t}
@@ -295,7 +325,7 @@ export default function HomePage() {
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-[#6c63ff] transition hover:text-[#5a52e0]"
+                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-primary transition hover:text-primary-hover"
                   >
                     Explore Project <ExternalLink className="h-3.5 w-3.5" />
                   </a>
@@ -314,7 +344,7 @@ export default function HomePage() {
           >
             <Link
               href="/projects"
-              className="inline-flex items-center gap-2 text-sm font-medium text-[#6c63ff] transition hover:text-[#5a52e0]"
+              className="inline-flex items-center gap-2 text-sm font-medium text-primary transition hover:text-primary-hover"
             >
               View all projects <ArrowRight className="h-4 w-4" />
             </Link>
@@ -322,11 +352,11 @@ export default function HomePage() {
         </Container>
       </section>
 
-      <section className="border-t border-[rgba(255,255,255,0.08)] pb-20 pt-16 sm:pb-28 sm:pt-24">
+      <section className="border-t pb-20 pt-16 sm:pb-28 sm:pt-24" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
         <Container>
           <div className="mx-auto max-w-3xl text-center">
             <motion.h2
-              className="text-2xl font-bold tracking-tight text-[#f1f5f9] sm:text-3xl"
+              className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
               initial={{ opacity: 0, y: 24 }}
               whileInView="animate"
               viewport={{ once: true }}
@@ -336,7 +366,7 @@ export default function HomePage() {
               About Me
             </motion.h2>
             <motion.p
-              className="mt-4 text-base leading-relaxed text-[#94a3b8] sm:text-lg"
+              className="mt-4 text-base leading-relaxed text-muted sm:text-lg"
               initial={{ opacity: 0, y: 24 }}
               whileInView="animate"
               viewport={{ once: true }}
@@ -358,13 +388,12 @@ export default function HomePage() {
             >
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-semibold transition-all duration-200"
+                className="inline-flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-semibold text-foreground transition-all duration-200 hover:-translate-y-0.5"
                 style={{
-                  background: "rgba(255,255,255,0.05)",
+                  background: "rgba(35,33,44,0.35)",
                   backdropFilter: "blur(16px)",
                   WebkitBackdropFilter: "blur(16px)",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  color: "#f1f5f9",
+                  border: "1px solid rgba(255,255,255,0.08)",
                 }}
               >
                 See My Work <ArrowRight className="h-4 w-4" />
@@ -375,16 +404,17 @@ export default function HomePage() {
       </section>
 
       <section
-        className="border-t border-[rgba(255,255,255,0.08)] pb-20 pt-16 sm:pb-28 sm:pt-24"
+        className="border-t pb-20 pt-16 sm:pb-28 sm:pt-24"
         style={{
+          borderColor: "rgba(255,255,255,0.06)",
           background:
-            "linear-gradient(180deg, transparent 0%, rgba(108,99,255,0.04) 100%)",
+            "linear-gradient(180deg, transparent 0%, rgba(124,106,255,0.04) 100%)",
         }}
       >
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <motion.h2
-              className="text-2xl font-bold tracking-tight text-[#f1f5f9] sm:text-3xl"
+              className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
               initial={{ opacity: 0, y: 24 }}
               whileInView="animate"
               viewport={{ once: true }}
@@ -394,7 +424,7 @@ export default function HomePage() {
               Let&rsquo;s Build Together
             </motion.h2>
             <motion.p
-              className="mt-4 text-base leading-relaxed text-[#94a3b8] sm:text-lg"
+              className="mt-4 text-base leading-relaxed text-muted sm:text-lg"
               initial={{ opacity: 0, y: 24 }}
               whileInView="animate"
               viewport={{ once: true }}
@@ -416,21 +446,20 @@ export default function HomePage() {
                 href="/contact"
                 className="inline-flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5"
                 style={{
-                  background:
-                    "linear-gradient(135deg, #6c63ff 0%, #5a52e0 100%)",
-                  boxShadow: "0 4px 16px rgba(108,99,255,0.3)",
+                  background: "linear-gradient(135deg, #7C6AFF 0%, #6A58E8 100%)",
+                  boxShadow: "0 4px 20px rgba(124,106,255,0.35)",
                 }}
               >
                 Contact Me
               </Link>
               <Link
                 href="/projects"
-                className="inline-flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-semibold text-[#f1f5f9] transition-all duration-200 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-semibold text-foreground transition-all duration-200 hover:-translate-y-0.5"
                 style={{
-                  background: "rgba(255,255,255,0.05)",
+                  background: "rgba(35,33,44,0.35)",
                   backdropFilter: "blur(16px)",
                   WebkitBackdropFilter: "blur(16px)",
-                  border: "1px solid rgba(255,255,255,0.1)",
+                  border: "1px solid rgba(255,255,255,0.08)",
                 }}
               >
                 View Projects

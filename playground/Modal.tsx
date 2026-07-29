@@ -110,22 +110,22 @@ export function Modal({ open, onClose, title, description, children }: ModalProp
         tabIndex={-1}
         className="relative w-full max-w-md rounded-2xl p-6 shadow-2xl outline-none"
         style={{
-          background: "rgba(18,18,26,0.95)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          border: "1px solid rgba(255,255,255,0.1)",
-          boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
+          background: "rgba(35,33,44,0.92)",
+          backdropFilter: "blur(24px)",
+          WebkitBackdropFilter: "blur(24px)",
+          border: "1px solid rgba(255,255,255,0.08)",
+          boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
         }}
       >
         <div className="flex items-start justify-between gap-4">
-          <h2 id={titleId} className="text-lg font-semibold text-[#f1f5f9]">
+          <h2 id={titleId} className="text-lg font-semibold text-foreground">
             {title}
           </h2>
           <button
             type="button"
             onClick={onClose}
             aria-label="Close dialog"
-            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-[#94a3b8] transition hover:bg-[rgba(255,255,255,0.1)] hover:text-[#f1f5f9]"
+            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-muted transition hover:bg-white/10 hover:text-foreground"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -144,11 +144,11 @@ export function Modal({ open, onClose, title, description, children }: ModalProp
           </button>
         </div>
         {description && (
-          <p id={descriptionId} className="mt-1 text-sm text-[#94a3b8]">
+          <p id={descriptionId} className="mt-1 text-sm text-muted">
             {description}
           </p>
         )}
-        <div className="mt-4 text-sm leading-relaxed text-[#cbd5e1]">
+        <div className="mt-4 text-sm leading-relaxed text-[#D0D0E0]">
           {children}
         </div>
       </div>

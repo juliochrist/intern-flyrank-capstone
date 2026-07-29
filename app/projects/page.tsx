@@ -99,9 +99,9 @@ export default function ProjectsPage() {
                       key={t}
                       className="rounded-full px-2.5 py-0.5 text-[10px] font-medium"
                       style={{
-                        background: "rgba(99,102,241,0.1)",
-                        color: "#6c63ff",
-                        border: "1px solid rgba(99,102,241,0.2)",
+                        background: "rgba(124,106,255,0.15)",
+                        color: "#7C6AFF",
+                        border: "1px solid rgba(124,106,255,0.25)",
                       }}
                     >
                       {t}

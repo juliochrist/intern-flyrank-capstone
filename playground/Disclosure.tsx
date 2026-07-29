@@ -24,7 +24,7 @@ export function Disclosure({ title, children, defaultOpen = false, className = "
           onClick={() => setOpen((prev) => !prev)}
           aria-expanded={open}
           aria-controls={panelId}
-          className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-sm font-medium text-[#f1f5f9] transition hover:bg-[rgba(255,255,255,0.03)]"
+          className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-sm font-medium text-foreground transition hover:bg-white/3"
           style={{
             borderRadius: open ? "1rem 1rem 0 0" : "1rem",
           }}
@@ -40,7 +40,7 @@ export function Disclosure({ title, children, defaultOpen = false, className = "
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="shrink-0 text-[#64748b] transition-transform duration-200"
+            className="shrink-0 text-muted-foreground transition-transform duration-200"
             style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)" }}
             aria-hidden="true"
           >
@@ -59,7 +59,7 @@ export function Disclosure({ title, children, defaultOpen = false, className = "
           opacity: open ? 1 : 0,
         }}
       >
-        <div className="border-t border-[rgba(255,255,255,0.08)] px-5 py-4 text-sm leading-relaxed text-[#94a3b8]">
+        <div className="border-t px-5 py-4 text-sm leading-relaxed text-muted" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
           {children}
         </div>
       </div>
@@ -75,13 +75,14 @@ interface AccordionProps {
 export function Accordion({ children, className = "" }: AccordionProps) {
   return (
     <div
-      className={`divide-y divide-[rgba(255,255,255,0.08)] overflow-hidden rounded-2xl ${className}`}
+      className={`divide-y overflow-hidden rounded-2xl ${className}`}
       style={{
-        background: "rgba(255,255,255,0.05)",
+        background: "rgba(35,33,44,0.35)",
         backdropFilter: "blur(20px)",
         WebkitBackdropFilter: "blur(20px)",
-        border: "1px solid rgba(255,255,255,0.1)",
-        boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+        border: "1px solid rgba(255,255,255,0.08)",
+        boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
+        borderColor: "rgba(255,255,255,0.06)",
       }}
     >
       {children}

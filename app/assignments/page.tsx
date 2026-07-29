@@ -300,7 +300,7 @@ function AssignmentRow({
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left transition hover:bg-glass-bg"
+        className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-left transition hover:bg-white/5"
       >
         <span
           className={`h-2 w-2 shrink-0 rounded-full ${
@@ -323,7 +323,12 @@ function AssignmentRow({
             transition={{ duration: 0.2, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="border-l border-glass-border ml-5 space-y-3 pb-3 pl-6 pt-1">
+            <div
+              className="ml-5 space-y-3 pb-3 pl-6 pt-1"
+              style={{
+                borderLeft: "1px solid rgba(255,255,255,0.06)",
+              }}
+            >
               {summary && (
                 <p className="text-sm leading-relaxed text-muted">{summary}</p>
               )}
@@ -351,27 +356,26 @@ function WeekSection({ week }: { week: WeekData }) {
     <div
       className="relative overflow-hidden rounded-2xl transition-all duration-250"
       style={{
-        background: "rgba(255,255,255,0.05)",
+        background: "rgba(35,33,44,0.35)",
         backdropFilter: "blur(20px)",
         WebkitBackdropFilter: "blur(20px)",
-        border: "1px solid rgba(255,255,255,0.1)",
-        boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+        border: "1px solid rgba(255,255,255,0.08)",
+        boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
       }}
     >
-      {/* Top-edge light gradient */}
       <div
         className="pointer-events-none absolute left-0 right-0 top-0 h-px"
         style={{
           background:
-            "linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent)",
+            "linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent)",
         }}
       />
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="flex w-full items-center gap-4 p-6 text-left transition hover:bg-glass-bg sm:p-8"
+        className="flex w-full items-center gap-4 p-6 text-left transition hover:bg-white/5 sm:p-8"
       >
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-sm font-bold text-primary ring-1 ring-primary/20">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-sm font-bold text-primary ring-1 ring-primary/25">
           {week.week}
         </div>
 
@@ -398,7 +402,12 @@ function WeekSection({ week }: { week: WeekData }) {
             transition={{ duration: 0.25, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <div className="border-t border-glass-border space-y-1 px-4 pb-4 pt-2 sm:px-6 sm:pb-6">
+            <div
+              className="space-y-1 px-4 pb-4 pt-2 sm:px-6 sm:pb-6"
+              style={{
+                borderTop: "1px solid rgba(255,255,255,0.06)",
+              }}
+            >
               {week.items.map((item) => (
                 <div key={item.filePath}>
                   <AssignmentRow {...item} />

@@ -15,13 +15,12 @@ export function Button({
   ...props
 }: ButtonProps) {
   const base =
-    "inline-flex w-full items-center justify-center rounded-xl px-4 py-2.5 text-sm font-medium transition disabled:cursor-not-allowed";
+    "inline-flex w-full items-center justify-center rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-200 disabled:cursor-not-allowed";
 
   const styles = {
     primary:
-      "btn-primary disabled:opacity-50",
-    secondary:
-      "btn-secondary disabled:opacity-50",
+      "bg-primary text-primary-foreground hover:bg-primary-hover disabled:opacity-50 shadow-lg shadow-primary/20",
+    secondary: "text-foreground hover:bg-white/10 disabled:opacity-50",
   };
 
   return (
@@ -30,6 +29,16 @@ export function Button({
       disabled={disabled || isLoading}
       aria-busy={isLoading}
       className={`${base} ${styles[variant]} ${className}`}
+      style={
+        variant === "secondary"
+          ? {
+              background: "rgba(35,33,44,0.35)",
+              backdropFilter: "blur(16px)",
+              WebkitBackdropFilter: "blur(16px)",
+              border: "1px solid rgba(255,255,255,0.08)",
+            }
+          : undefined
+      }
       {...props}
     >
       {isLoading ? "Saving\u2026" : children}

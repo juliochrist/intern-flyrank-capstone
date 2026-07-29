@@ -50,7 +50,7 @@ export function ChatInput({
   return (
     <div
       className="border-t px-4 py-4"
-      style={{ borderColor: "rgba(255,255,255,0.08)" }}
+      style={{ borderColor: "rgba(255,255,255,0.06)" }}
     >
       <form onSubmit={handleSubmit} className="mx-auto flex max-w-3xl gap-3">
         <div className="relative flex-1">
@@ -63,9 +63,10 @@ export function ChatInput({
             rows={1}
             disabled={isBusy}
             aria-label="Chat message"
-            className="w-full resize-none rounded-xl bg-[rgba(255,255,255,0.05)] px-4 py-3 pr-12 text-sm text-[#f1f5f9] outline-none transition placeholder:text-[#64748b] focus:ring-2 focus:ring-[#6c63ff]/50 disabled:opacity-40"
+            className="w-full resize-none rounded-xl px-4 py-3 pr-12 text-sm text-foreground outline-none transition placeholder:text-muted-foreground focus:ring-2 focus:ring-primary/50 disabled:opacity-40"
             style={{
-              border: "1px solid rgba(255,255,255,0.1)",
+              background: "rgba(35,33,44,0.35)",
+              border: "1px solid rgba(255,255,255,0.08)",
             }}
           />
         </div>
@@ -103,11 +104,11 @@ export function ChatInput({
               style={{
                 background:
                   isEmpty
-                    ? "rgba(255,255,255,0.1)"
-                    : "linear-gradient(135deg, #6c63ff 0%, #5a52e0 100%)",
+                    ? "rgba(255,255,255,0.08)"
+                    : "linear-gradient(135deg, #7C6AFF 0%, #6A58E8 100%)",
                 boxShadow: isEmpty
                   ? "none"
-                  : "0 4px 16px rgba(108,99,255,0.3)",
+                  : "0 4px 16px rgba(124,106,255,0.35)",
               }}
             >
               <svg
@@ -136,7 +137,7 @@ export function ChatInput({
             type="button"
             onClick={onRegenerate}
             aria-label="Regenerate last response"
-            className="inline-flex items-center gap-1.5 text-xs text-[#64748b] transition hover:text-[#94a3b8]"
+            className="inline-flex items-center gap-1.5 text-xs text-muted-foreground transition hover:text-muted"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

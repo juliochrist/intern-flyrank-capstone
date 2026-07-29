@@ -30,45 +30,59 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <body className="flex min-h-screen flex-col font-sans antialiased">
-        {/* Background gradient blobs for glass refraction */}
+        <div className="stars" aria-hidden="true" />
+
         <div className="fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
           <div
             className="pointer-events-none absolute"
             style={{
-              width: "700px",
-              height: "700px",
+              width: "800px",
+              height: "800px",
               background:
-                "radial-gradient(circle, rgba(108,99,255,0.3) 0%, transparent 70%)",
+                "radial-gradient(circle, rgba(124,106,255,0.25) 0%, transparent 65%)",
               filter: "blur(120px)",
-              top: "-250px",
+              top: "-300px",
               left: "-200px",
-              animation: "float-slow 20s ease-in-out infinite",
+              animation: "nebula-drift 25s ease-in-out infinite",
             }}
           />
           <div
             className="pointer-events-none absolute"
             style={{
-              width: "550px",
-              height: "550px",
+              width: "600px",
+              height: "600px",
               background:
-                "radial-gradient(circle, rgba(34,211,238,0.2) 0%, transparent 70%)",
-              filter: "blur(120px)",
+                "radial-gradient(circle, rgba(107,138,255,0.18) 0%, transparent 65%)",
+              filter: "blur(100px)",
               bottom: "-150px",
               right: "-150px",
-              animation: "float-slow 18s ease-in-out infinite reverse",
+              animation: "nebula-drift-2 22s ease-in-out infinite reverse",
             }}
           />
           <div
             className="pointer-events-none absolute"
             style={{
-              width: "450px",
-              height: "450px",
+              width: "500px",
+              height: "500px",
               background:
-                "radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%)",
-              filter: "blur(100px)",
+                "radial-gradient(circle, rgba(180,120,255,0.15) 0%, transparent 65%)",
+              filter: "blur(90px)",
               top: "40%",
               left: "55%",
-              animation: "blob-drift 22s ease-in-out infinite",
+              animation: "nebula-drift 20s ease-in-out infinite",
+            }}
+          />
+          <div
+            className="pointer-events-none absolute"
+            style={{
+              width: "400px",
+              height: "400px",
+              background:
+                "radial-gradient(circle, rgba(124,106,255,0.12) 0%, transparent 65%)",
+              filter: "blur(80px)",
+              top: "60%",
+              left: "10%",
+              animation: "nebula-drift-2 28s ease-in-out infinite reverse",
             }}
           />
         </div>

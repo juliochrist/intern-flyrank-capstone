@@ -13,13 +13,14 @@ export default function Button({
   className = "",
   ...props
 }: ButtonProps) {
-  const base = "inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-medium transition disabled:cursor-not-allowed";
+  const base =
+    "inline-flex items-center justify-center rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-200 disabled:cursor-not-allowed";
 
   const styles = {
     primary:
-      "bg-[#6c63ff] text-white hover:bg-[#5a52e0] disabled:opacity-50",
+      "bg-primary text-primary-foreground hover:bg-primary-hover disabled:opacity-50 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30",
     secondary:
-      "border border-[rgba(255,255,255,0.1)] bg-[rgba(255,255,255,0.05)] text-[#f1f5f9] hover:bg-[rgba(255,255,255,0.1)] disabled:opacity-50",
+      "text-foreground hover:bg-white/10 disabled:opacity-50",
   };
 
   return (
@@ -27,6 +28,16 @@ export default function Button({
       disabled={disabled || isLoading}
       aria-busy={isLoading}
       className={`${base} ${styles[variant]} ${className}`}
+      style={
+        variant === "secondary"
+          ? {
+              background: "rgba(35,33,44,0.35)",
+              backdropFilter: "blur(16px)",
+              WebkitBackdropFilter: "blur(16px)",
+              border: "1px solid rgba(255,255,255,0.08)",
+            }
+          : undefined
+      }
       {...props}
     >
       {isLoading ? "Loading\u2026" : children}

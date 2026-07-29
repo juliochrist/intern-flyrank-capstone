@@ -56,11 +56,15 @@ export function TextInput({
       id={id}
       aria-invalid={hasError || undefined}
       aria-describedby={describedBy}
-      className={`w-full rounded-xl bg-glass-bg px-4 py-2.5 text-sm text-foreground outline-none backdrop-blur-sm transition placeholder:text-muted-foreground focus:bg-glass-bg-hover focus:ring-2 disabled:cursor-not-allowed disabled:opacity-60 ${
+      className={`w-full rounded-xl px-4 py-2.5 text-sm text-foreground outline-none backdrop-blur-sm transition placeholder:text-muted-foreground focus:ring-2 disabled:cursor-not-allowed disabled:opacity-60 ${
         hasError
           ? "border border-error/50 focus:border-error focus:ring-error/20"
-          : "border border-glass-border focus:border-primary/50 focus:ring-primary/20"
+          : "border focus:border-primary/50 focus:ring-primary/20"
       } ${className}`}
+      style={{
+        background: "rgba(35,33,44,0.35)",
+        borderColor: hasError ? undefined : "rgba(255,255,255,0.08)",
+      }}
       {...props}
     />
   );

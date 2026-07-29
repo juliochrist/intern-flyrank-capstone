@@ -15,7 +15,7 @@ function Section({
 }) {
   return (
     <section className="mb-16">
-      <h2 className="mb-6 text-2xl font-bold tracking-tight text-[#f1f5f9]">
+      <h2 className="mb-6 text-2xl font-bold tracking-tight text-foreground">
         {title}
       </h2>
       {children}
@@ -34,14 +34,14 @@ function Preview({
     <div
       className="rounded-2xl p-6"
       style={{
-        background: "rgba(255,255,255,0.05)",
+        background: "rgba(35,33,44,0.35)",
         backdropFilter: "blur(20px)",
         WebkitBackdropFilter: "blur(20px)",
-        border: "1px solid rgba(255,255,255,0.1)",
-        boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+        border: "1px solid rgba(255,255,255,0.08)",
+        boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
       }}
     >
-      <p className="mb-4 text-xs font-medium tracking-wide uppercase text-[#64748b]">
+      <p className="mb-4 text-xs font-medium tracking-wide uppercase text-muted-foreground">
         {label}
       </p>
       {children}
@@ -57,51 +57,50 @@ export default function PlaygroundPage() {
     <Container className="py-16 sm:py-22">
       <div className="mx-auto max-w-3xl">
         <div className="mb-12">
-          <p className="text-sm font-medium text-[#6c63ff]">
+          <p className="text-sm font-medium text-primary">
             Week 04 — FE-05
           </p>
-          <h1 className="mt-1 text-3xl font-bold tracking-tight text-[#f1f5f9] sm:text-4xl">
+          <h1 className="mt-1 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             React Playground
           </h1>
-          <p className="mt-3 text-lg text-[#94a3b8]">
+          <p className="mt-3 text-lg text-muted">
             Accessible UI components built from scratch following WAI-ARIA
             Authoring Practices.
           </p>
         </div>
 
-        {/* ── Modal ── */}
         <Section title="Modal Dialog">
           <div className="grid gap-6 sm:grid-cols-2">
             <Preview label="Controlled">
               <button
                 type="button"
                 onClick={() => setModalOpen(true)}
-                className="inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-medium text-white transition hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-medium text-white transition-all duration-200 hover:-translate-y-0.5"
                 style={{
                   background:
-                    "linear-gradient(135deg, #6c63ff 0%, #5a52e0 100%)",
-                  boxShadow: "0 4px 16px rgba(108,99,255,0.3)",
+                    "linear-gradient(135deg, #7C6AFF 0%, #6A58E8 100%)",
+                  boxShadow: "0 4px 16px rgba(124,106,255,0.3)",
                 }}
               >
                 Open Modal
               </button>
             </Preview>
             <Preview label="Props">
-              <div className="space-y-1.5 text-xs font-mono text-[#94a3b8]">
+              <div className="space-y-1.5 text-xs font-mono text-muted">
                 <p>
-                  <span className="text-[#22d3ee]">role</span>=&ldquo;dialog&rdquo;
+                  <span className="text-accent">role</span>=&ldquo;dialog&rdquo;
                 </p>
                 <p>
-                  <span className="text-[#22d3ee]">aria-modal</span>=&ldquo;true&rdquo;
+                  <span className="text-accent">aria-modal</span>=&ldquo;true&rdquo;
                 </p>
                 <p>
-                  <span className="text-[#22d3ee]">aria-labelledby</span> → h2
+                  <span className="text-accent">aria-labelledby</span> → h2
                 </p>
                 <p>
-                  <span className="text-[#22d3ee]">aria-describedby</span> → p
+                  <span className="text-accent">aria-describedby</span> → p
                 </p>
                 <p>
-                  <span className="text-[#22d3ee]">ESC</span> closes · focus
+                  <span className="text-accent">ESC</span> closes · focus
                   trap · click outside closes
                 </p>
               </div>
@@ -121,7 +120,6 @@ export default function PlaygroundPage() {
           </Modal>
         </Section>
 
-        {/* ── Tabs ── */}
         <Section title="Tabs">
           <div className="grid gap-6 sm:grid-cols-2">
             <Preview label="Controlled">
@@ -158,22 +156,22 @@ export default function PlaygroundPage() {
               </Tabs>
             </Preview>
             <Preview label="Props">
-              <div className="space-y-1.5 text-xs font-mono text-[#94a3b8]">
+              <div className="space-y-1.5 text-xs font-mono text-muted">
                 <p>
-                  <span className="text-[#22d3ee]">role</span>=&ldquo;tablist&rdquo;
+                  <span className="text-accent">role</span>=&ldquo;tablist&rdquo;
                 </p>
                 <p>
-                  <span className="text-[#22d3ee]">role</span>=&ldquo;tab&rdquo;
+                  <span className="text-accent">role</span>=&ldquo;tab&rdquo;
                 </p>
                 <p>
-                  <span className="text-[#22d3ee]">role</span>=&ldquo;tabpanel&rdquo;
+                  <span className="text-accent">role</span>=&ldquo;tabpanel&rdquo;
                 </p>
                 <p>
-                  <span className="text-[#22d3ee]">aria-selected</span> ·
+                  <span className="text-accent">aria-selected</span> ·
                   aria-controls
                 </p>
                 <p>
-                  <span className="text-[#22d3ee]">← → Home End</span> keyboard
+                  <span className="text-accent">← → Home End</span> keyboard
                   nav
                 </p>
               </div>
@@ -202,7 +200,6 @@ export default function PlaygroundPage() {
           </div>
         </Section>
 
-        {/* ── Disclosure / Accordion ── */}
         <Section title="Disclosure / Accordion">
           <div className="grid gap-6 sm:grid-cols-2">
             <Preview label="Single Disclosure">
@@ -216,9 +213,9 @@ export default function PlaygroundPage() {
               <div className="mt-3">
                 <Disclosure title="How do I navigate with a keyboard?">
                   <p>
-                    Use <kbd className="rounded bg-[rgba(255,255,255,0.1)] px-1.5 py-0.5 font-mono text-xs text-[#f1f5f9]">Tab</kbd>{" "}
-                    to focus the button, then <kbd className="rounded bg-[rgba(255,255,255,0.1)] px-1.5 py-0.5 font-mono text-xs text-[#f1f5f9]">Enter</kbd>{" "}
-                    or <kbd className="rounded bg-[rgba(255,255,255,0.1)] px-1.5 py-0.5 font-mono text-xs text-[#f1f5f9]">Space</kbd>{" "}
+                    Use <kbd className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-xs text-foreground">Tab</kbd>{" "}
+                    to focus the button, then <kbd className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-xs text-foreground">Enter</kbd>{" "}
+                    or <kbd className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-xs text-foreground">Space</kbd>{" "}
                     to toggle.
                   </p>
                 </Disclosure>

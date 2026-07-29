@@ -16,25 +16,25 @@ export function ThinkingIndicator({ visible }: ThinkingIndicatorProps) {
       <div
         className="flex items-center gap-3 rounded-2xl px-5 py-4"
         style={{
-          background: "rgba(255,255,255,0.05)",
-          border: "1px solid rgba(255,255,255,0.1)",
+          background: "rgba(35,33,44,0.35)",
+          border: "1px solid rgba(255,255,255,0.08)",
         }}
       >
         <div className="flex gap-1.5">
           <span
-            className="h-2 w-2 animate-bounce rounded-full bg-[#6c63ff]"
+            className="h-2 w-2 animate-bounce rounded-full bg-primary"
             style={{ animationDelay: "0ms" }}
           />
           <span
-            className="h-2 w-2 animate-bounce rounded-full bg-[#6c63ff]"
+            className="h-2 w-2 animate-bounce rounded-full bg-primary"
             style={{ animationDelay: "150ms" }}
           />
           <span
-            className="h-2 w-2 animate-bounce rounded-full bg-[#6c63ff]"
+            className="h-2 w-2 animate-bounce rounded-full bg-primary"
             style={{ animationDelay: "300ms" }}
           />
         </div>
-        <span className="text-xs font-medium text-[#64748b]">
+        <span className="text-xs font-medium text-muted-foreground">
           Thinking...
         </span>
       </div>
