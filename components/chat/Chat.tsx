@@ -37,15 +37,23 @@ export function Chat() {
     msg?.parts?.some(
       (p) => p.type === "text" && (p as { type: "text"; text: string }).text.length > 0,
     );
+  const hasToolContent = (msg: typeof lastMessage) =>
+    msg?.parts?.some(
+      (p) =>
+        p.type === "dynamic-tool" &&
+        (p.state === "output-available" || p.state === "output-error"),
+    );
+  const hasContent = (msg: typeof lastMessage) =>
+    hasTextContent(msg) || hasToolContent(msg);
   const isWaitingForFirstToken =
     status === "submitted" ||
-    (status === "streaming" && lastMessage?.role === "assistant" && !hasTextContent(lastMessage));
+    (status === "streaming" && lastMessage?.role === "assistant" && !hasContent(lastMessage));
 
   const finishedButEmpty =
     status === "ready" &&
     lastMessage?.role === "assistant" &&
     hasMessages &&
-    !hasTextContent(lastMessage);
+    !hasContent(lastMessage);
 
   const showError = error && !dismissedError;
 
@@ -80,6 +88,7 @@ export function Chat() {
               <ChatMessage
                 key={message.id}
                 message={message}
+                onRetry={handleRetry}
                 isStreaming={
                   isBusy &&
                   message.role === "assistant" &&

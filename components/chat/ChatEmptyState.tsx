@@ -4,6 +4,7 @@ const EXAMPLE_PROMPTS = [
   "Create a responsive navbar component with a mobile hamburger menu",
   "Explain React Server Components vs Client Components with examples",
   "Show me a form with validation using React Hook Form and Zod",
+  "Search this project's docs for what I wrote about the Study Coach agent",
 ];
 
 interface ChatEmptyStateProps {
