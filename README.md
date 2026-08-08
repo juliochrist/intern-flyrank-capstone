@@ -59,6 +59,10 @@
 - [PF-04: Personal Website Live on the FlyRank Domain](assignments/week-05/pf-04-personal-website.md)
 - [Deployment Checklist](assignments/week-05/deployment-checklist.md)
 
+### Week 6
+
+- [Explain It Like You Built It — The AI Chat Flow](assignments/week-06/explain-it-like-you-built-it.md)
+
 ### Agent Workspace
 
 - [Agent Spec](agent/agent-spec.md)
@@ -118,6 +122,7 @@ See [assignments/week-05/fe-07-tool-results.md](assignments/week-05/fe-07-tool-r
 - ✅ Week 3 Completed
 - ✅ Week 4 Completed
 - ✅ Week 5 Completed
+- ✅ Week 6 Completed
 
 ### Week 3
 
@@ -146,6 +151,10 @@ See [assignments/week-05/fe-07-tool-results.md](assignments/week-05/fe-07-tool-r
 - ✅ FE-08: Error States, Empty States, and Edge Cases
 - ✅ PF-04: Personal Website Live on the FlyRank Domain
 - ✅ Deployment Checklist
+
+### Week 6
+
+- ✅ Explain It Like You Built It — The AI Chat Flow
 
 ### Checkpoint 1
 

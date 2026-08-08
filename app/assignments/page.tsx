@@ -253,11 +253,25 @@ const weeks: WeekData[] = [
           "Built the narrowest working version of the study coach agent. Created a full agent workspace (spec, instructions, eval cases, tool map, build log, run capture notes) and a lightweight filesystem demo script that reads local assignment files and prepares structured context for Claude Project.",
         status: "completed",
       },
-      {
+{
         title: "FE-07: Tool Results & Structured Output",
         filePath: "week-05/fe-07-tool-results.md",
         summary:
           "Added one real server-side tool to the AI chat: searchProjectDocs, a deterministic search over a distilled index of this repo's docs (lib/ai/projectDocsData.ts). Wire protocol streams the tool-call input and returns structured findings rendered as a result card. The UI renders all four tool lifecycle states (input streaming, input ready, output, error) with retry; the `!fail` query prefix forces a tool error for testing.",
+        status: "completed",
+      },
+    ],
+  },
+  {
+    week: 6,
+    label: "Explain It Like You Built It",
+    status: "completed",
+    items: [
+      {
+        title: "Explain It Like You Built It — The AI Chat Flow",
+        filePath: "week-06/explain-it-like-you-built-it.md",
+        summary:
+          "Explained the AI chat end-to-end using the real implementation, not a generic tutorial: the user's message → Next.js API route → AI SDK streamText → dynamic tool execution → UI rendering. Covers the toModelMessage translation layer (UI message vs model message format), the two-step agent loop guarded by isStepCount(3), where the search tool actually runs (server-side), and why dynamicTool streams the tool input. Includes the final plain-English submission plus a Bahasa Indonesia version.",
         status: "completed",
       },
     ],
