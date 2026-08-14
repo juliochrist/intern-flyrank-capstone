@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const links = [
   { href: "/", label: "Home" },
@@ -14,8 +14,6 @@ const links = [
   { href: "/playground", label: "Playground" },
   { href: "/chat", label: "Chat" },
   { href: "/contact", label: "Contact" },
-  { href: "/settings", label: "Settings" },
-  { href: "/health", label: "Health" },
 ];
 
 export default function Navbar() {
@@ -42,8 +40,16 @@ export default function Navbar() {
           href="/"
           className="flex items-center gap-2 text-sm font-semibold text-foreground"
         >
-          <Sparkles className="h-4 w-4 text-primary" />
-          FlyRank
+          <span
+            className="flex h-6 w-6 items-center justify-center rounded-lg text-[11px] font-bold"
+            style={{
+              background: "linear-gradient(135deg, #7C6AFF 0%, #6A58E8 100%)",
+              color: "#FFFFFF",
+            }}
+          >
+            JC
+          </span>
+          Julio Christianto
         </Link>
 
         <ul className="hidden items-center gap-1 md:flex">

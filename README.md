@@ -62,6 +62,7 @@
 ### Week 6
 
 - [Explain It Like You Built It — The AI Chat Flow](assignments/week-06/explain-it-like-you-built-it.md)
+- [Survive the Crit — AI-Assisted Review & Fixes](assignments/week-06/survive-the-crit.md)
 
 ### Agent Workspace
 
@@ -155,6 +156,7 @@ See [assignments/week-05/fe-07-tool-results.md](assignments/week-05/fe-07-tool-r
 ### Week 6
 
 - ✅ Explain It Like You Built It — The AI Chat Flow
+- ✅ Survive the Crit — AI-Assisted Review & Fixes
 
 ### Checkpoint 1
 

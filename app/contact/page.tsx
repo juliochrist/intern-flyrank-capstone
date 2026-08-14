@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Mail, Globe, BriefcaseBusiness, FileText, Calendar } from "lucide-react";
+import { Mail, BriefcaseBusiness, Globe } from "lucide-react";
 import Container from "../../components/Container";
 import Card from "../../components/Card";
 import Section from "../../components/Section";
 
 export const metadata: Metadata = {
-  title: "Contact — FlyRank Capstone",
+  title: "Contact — Julio Christianto",
 };
 
 export default function ContactPage() {
@@ -17,90 +17,86 @@ export default function ContactPage() {
             Contact
           </h1>
           <p className="mt-3 text-lg text-muted">
-            If you are looking for someone who can build AI-powered web
-            applications, I would love to talk.
+            I build AI-powered web applications and I am looking for a
+            frontend engineering role where I can keep doing it.
           </p>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-3">
-          <Card>
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
-              <Mail className="h-5 w-5" />
-            </div>
-            <h2 className="mt-4 text-lg font-semibold text-foreground">
-              Email
-            </h2>
-            <p className="mt-2 text-sm text-muted">
+        <div className="mt-12 space-y-6">
+          <div
+            className="rounded-2xl p-6 sm:p-8"
+            style={{
+              background: "rgba(35,33,44,0.35)",
+              backdropFilter: "blur(20px)",
+              WebkitBackdropFilter: "blur(20px)",
+              border: "1px solid rgba(255,255,255,0.08)",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
+            }}
+          >
+            <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+              <div className="max-w-xl">
+                <h2 className="text-xl font-semibold text-foreground">
+                  Let&rsquo;s build together
+                </h2>
+                <p className="mt-2 text-sm leading-relaxed text-muted">
+                  Email is the fastest way to reach me. No booking link needed
+                  — send a message and I will reply.
+                </p>
+              </div>
               <a
                 href="mailto:julio.christianto@10x.ai"
-                className="text-primary transition hover:text-primary-hover"
+                className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5"
+                style={{
+                  background: "linear-gradient(135deg, #7C6AFF 0%, #6A58E8 100%)",
+                  boxShadow: "0 4px 20px rgba(124,106,255,0.35)",
+                }}
               >
-                julio.christianto@10x.ai
+                <Mail className="h-4 w-4" />
+                Email me
               </a>
-            </p>
-          </Card>
-          <Card>
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20">
-              <BriefcaseBusiness className="h-5 w-5" />
             </div>
-            <h2 className="mt-4 text-lg font-semibold text-foreground">
-              LinkedIn
-            </h2>
-            <p className="mt-2 text-sm text-muted">
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2">
+            <Card>
               <a
                 href="https://linkedin.com/in/juliochrist"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary transition hover:text-primary-hover"
+                className="flex h-full flex-col"
               >
-                linkedin.com/in/juliochrist
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20">
+                  <BriefcaseBusiness className="h-5 w-5" />
+                </div>
+                <h2 className="mt-4 text-lg font-semibold text-foreground">
+                  LinkedIn
+                </h2>
+                <p className="mt-2 text-sm text-muted">
+                  linkedin.com/in/juliochrist
+                  <span className="ml-1 text-primary">&rarr;</span>
+                </p>
               </a>
-            </p>
-          </Card>
-          <Card>
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20">
-              <Globe className="h-5 w-5" />
-            </div>
-            <h2 className="mt-4 text-lg font-semibold text-foreground">
-              GitHub
-            </h2>
-            <p className="mt-2 text-sm text-muted">
+            </Card>
+            <Card>
               <a
                 href="https://github.com/juliochrist/intern-flyrank-capstone"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary transition hover:text-primary-hover"
+                className="flex h-full flex-col"
               >
-                github.com/juliochrist/intern-flyrank-capstone
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20">
+                  <Globe className="h-5 w-5" />
+                </div>
+                <h2 className="mt-4 text-lg font-semibold text-foreground">
+                  GitHub
+                </h2>
+                <p className="mt-2 text-sm text-muted">
+                  Where this portfolio and the AI chat are built
+                  <span className="ml-1 text-primary">&rarr;</span>
+                </p>
               </a>
-            </p>
-          </Card>
-          <Card>
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20">
-              <FileText className="h-5 w-5" />
-            </div>
-            <h2 className="mt-4 text-lg font-semibold text-foreground">
-              CV / Resume
-            </h2>
-            <p className="mt-2 text-sm text-muted">
-              <span className="text-muted-foreground">
-                Coming soon
-              </span>
-            </p>
-          </Card>
-          <Card>
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20">
-              <Calendar className="h-5 w-5" />
-            </div>
-            <h2 className="mt-4 text-lg font-semibold text-foreground">
-              Book a Call
-            </h2>
-            <p className="mt-2 text-sm text-muted">
-              <span className="text-muted-foreground">
-                Booking link coming soon
-              </span>
-            </p>
-          </Card>
+            </Card>
+          </div>
         </div>
       </Section>
     </Container>

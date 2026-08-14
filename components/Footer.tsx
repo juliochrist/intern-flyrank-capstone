@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ExternalLink, Sparkles } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -13,19 +13,12 @@ export default function Footer() {
     >
       <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
         <div className="flex items-center gap-2 text-sm text-muted">
-          <Sparkles className="h-4 w-4 text-primary" />
-          <span>&copy; {new Date().getFullYear()} FlyRank Capstone</span>
+          <span>&copy; {new Date().getFullYear()} Julio Christianto</span>
         </div>
 
         <div className="flex items-center gap-6 text-sm">
-          <Link
-            href="/health"
-            className="text-muted transition hover:text-foreground"
-          >
-            Health
-          </Link>
           <a
-            href="https://github.com/juliochrist/flyrank-capstone"
+            href="https://github.com/juliochrist/intern-flyrank-capstone"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-muted transition hover:text-foreground"
@@ -33,6 +26,12 @@ export default function Footer() {
             <ExternalLink className="h-4 w-4" />
             GitHub
           </a>
+          <Link
+            href="/contact"
+            className="text-muted transition hover:text-foreground"
+          >
+            Contact
+          </Link>
         </div>
       </div>
     </footer>

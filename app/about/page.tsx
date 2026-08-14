@@ -5,7 +5,7 @@ import Card from "../../components/Card";
 import Section from "../../components/Section";
 
 export const metadata: Metadata = {
-  title: "About — FlyRank Capstone",
+  title: "About — Julio Christianto",
 };
 
 export default function AboutPage() {
@@ -17,24 +17,27 @@ export default function AboutPage() {
             About
           </h1>
           <p className="mt-3 text-lg text-muted">
-            Frontend AI Engineering Intern building AI-powered web applications.
+            Julio Christianto — a Frontend AI Engineering intern building
+            AI-powered web applications.
           </p>
         </div>
 
         <div className="mt-12 space-y-12">
           <Card>
-            <h2 className="text-lg font-semibold text-foreground">Bio</h2>
+            <h2 className="text-lg font-semibold text-foreground">
+              Who I am
+            </h2>
             <p className="mt-3 text-sm leading-relaxed text-muted">
-              I build AI-powered web applications with React, TypeScript, and
-              modern frontend tools. As a Frontend AI Engineering Intern at
-              FlyRank, I ship production code by combining strong fundamentals
-              with AI collaboration — using Claude and ChatGPT to generate,
-              review, and improve my work. I focus on practical outcomes:
-              accessible UI, clean architecture, and features that solve real
-              business problems. My current projects include an AI-powered
-              market analysis tool (TradeIntel) and this portfolio site, both
-              built with strict TypeScript, React Hook Form, and Tailwind CSS
-              v4.
+              I&rsquo;m Julio Christianto. I build AI-powered web applications
+              with React, TypeScript, and modern frontend tools. As a
+              Frontend AI Engineering Intern at FlyRank, I ship production
+              code by combining strong fundamentals with AI collaboration —
+              using Claude and ChatGPT to generate, review, and improve my
+              work. I focus on practical outcomes: accessible UI, clean
+              architecture, and features that solve real business problems.
+              My current projects include an AI-powered market analysis tool
+              (TradeIntel) and this portfolio site, both built with strict
+              TypeScript, React Hook Form, and Tailwind CSS v4.
             </p>
           </Card>
 

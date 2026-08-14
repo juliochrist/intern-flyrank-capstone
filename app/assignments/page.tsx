@@ -274,6 +274,13 @@ const weeks: WeekData[] = [
           "Explained the AI chat end-to-end using the real implementation, not a generic tutorial: the user's message → Next.js API route → AI SDK streamText → dynamic tool execution → UI rendering. Covers the toModelMessage translation layer (UI message vs model message format), the two-step agent loop guarded by isStepCount(3), where the search tool actually runs (server-side), and why dynamicTool streams the tool input. Includes the final plain-English submission plus a Bahasa Indonesia version.",
         status: "completed",
       },
+      {
+        title: "Survive the Crit — AI-Assisted Review & Fixes",
+        filePath: "week-06/survive-the-crit.md",
+        summary:
+          "Ran an AI-assisted critique of the live portfolio as a hiring manager. Categorized findings into MUST-FIX and NICE-TO-HAVE and implemented all of them: personal branding everywhere instead of 'FlyRank Capstone', removed dead placeholder links (Settings, Health, CV/booking 'coming soon'), rebuilt the Contact page around a single email CTA, surfaced the flagship AI chat on Home and Projects, and fixed a stale GitHub URL. Verified with tsc, lint, and build.",
+        status: "completed",
+      },
     ],
   },
 ];

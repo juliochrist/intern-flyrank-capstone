@@ -4,7 +4,7 @@ Pick one real feature from the project and explain how it works end-to-end until
 
 ## Submission (English)
 
-> **The one feature:** an AI chat that answers questions about *my own project* — grounded in real data, not guesses.
+> **The one feature:** an AI chat that answers questions about _my own project_ — grounded in real data, not guesses.
 >
 > **How it works, from start to finish:**
 >
@@ -20,7 +20,7 @@ Pick one real feature from the project and explain how it works end-to-end until
 
 ## Alternate version (Bahasa Indonesia)
 
-> **Satu fitur yang saya jelaskan:** chat AI yang menjawab pertanyaan *tentang proyek saya sendiri* — berbasis data, bukan tebakan.
+> **Satu fitur yang saya jelaskan:** chat AI yang menjawab pertanyaan _tentang proyek saya sendiri_ — berbasis data, bukan tebakan.
 >
 > **Cara alur-nya, mulai sampai akhir:**
 >

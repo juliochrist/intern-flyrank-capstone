@@ -17,9 +17,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "FlyRank Capstone",
+  title: "Julio Christianto — Frontend AI Engineering",
   description:
-    "AI-powered web applications built with React, TypeScript, and Next.js",
+    "Julio Christianto builds AI-powered web applications with React, TypeScript, and Next.js — Frontend AI Engineering portfolio and internship work.",
 };
 
 export default function RootLayout({

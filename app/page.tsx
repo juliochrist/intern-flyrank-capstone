@@ -168,7 +168,7 @@ export default function HomePage() {
                 className="h-1.5 w-1.5 rounded-full"
                 style={{ background: "#7C6AFF", boxShadow: "0 0 6px rgba(124,106,255,0.6)" }}
               />
-              AI Frontend Engineering Capstone
+              Frontend AI Engineering
             </motion.p>
 
             <motion.h1
@@ -176,14 +176,13 @@ export default function HomePage() {
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="text-4xl font-bold leading-[1.1] tracking-[-0.03em] text-foreground sm:text-5xl md:text-6xl lg:text-7xl"
             >
-              AI-powered{" "}
+              Frontend engineering,
+              <br />
               <span
                 className="bg-gradient-to-r from-[#7C6AFF] to-[#6B8AFF] bg-clip-text text-transparent"
               >
-                web applications
+                amplified by AI.
               </span>
-              <br />
-              built with purpose.
             </motion.h1>
 
             <motion.p
@@ -191,9 +190,10 @@ export default function HomePage() {
               transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
               className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg"
             >
-              I build fast, accessible web applications with modern frontend
-              tools and AI-assisted workflows — turning real requirements into
-              production-ready experiences.
+              I&rsquo;m Julio Christianto, a Frontend AI Engineering intern at
+              FlyRank. I build accessible, production-ready web apps with
+              React, TypeScript, and AI-assisted workflows — and ship them to
+              Vercel.
             </motion.p>
 
             <motion.div
@@ -212,7 +212,7 @@ export default function HomePage() {
                 View My Projects
               </Link>
               <Link
-                href="/about"
+                href="/contact"
                 className="inline-flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-semibold text-foreground transition-all duration-200 hover:-translate-y-0.5"
                 style={{
                   background: "rgba(35,33,44,0.35)",
@@ -221,7 +221,7 @@ export default function HomePage() {
                   border: "1px solid rgba(255,255,255,0.08)",
                 }}
               >
-                See My Work
+                Contact Me
               </Link>
             </motion.div>
           </motion.div>
@@ -349,6 +349,38 @@ export default function HomePage() {
               View all projects <ArrowRight className="h-4 w-4" />
             </Link>
           </motion.div>
+
+          <motion.div
+            className="mx-auto mt-8 max-w-xl"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={{ animate: { opacity: 1, y: 0 } }}
+            transition={{ duration: 0.4, delay: 0.35 }}
+          >
+            <Link
+              href="/chat"
+              className="group block rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1"
+              style={{
+                background: "rgba(35,33,44,0.35)",
+                backdropFilter: "blur(20px)",
+                WebkitBackdropFilter: "blur(20px)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
+              }}
+            >
+              <p className="text-sm font-semibold text-foreground">
+                Try the live AI chat
+                <span className="ml-2 text-primary transition group-hover:translate-x-0.5 inline-block">
+                  &rarr;
+                </span>
+              </p>
+              <p className="mt-1.5 text-sm leading-relaxed text-muted">
+                This site ships an AI chat grounded in this project&rsquo;s own
+                docs — ask it anything and watch the tool results render live.
+              </p>
+            </Link>
+          </motion.div>
         </Container>
       </section>
 
@@ -388,15 +420,9 @@ export default function HomePage() {
             >
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-semibold text-foreground transition-all duration-200 hover:-translate-y-0.5"
-                style={{
-                  background: "rgba(35,33,44,0.35)",
-                  backdropFilter: "blur(16px)",
-                  WebkitBackdropFilter: "blur(16px)",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                }}
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition hover:text-primary-hover"
               >
-                See My Work <ArrowRight className="h-4 w-4" />
+                Read my full profile <ArrowRight className="h-4 w-4" />
               </Link>
             </motion.div>
           </div>
