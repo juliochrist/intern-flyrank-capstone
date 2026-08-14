@@ -64,6 +64,7 @@
 - [Explain It Like You Built It — The AI Chat Flow](assignments/week-06/explain-it-like-you-built-it.md)
 - [Survive the Crit — AI-Assisted Review & Fixes](assignments/week-06/survive-the-crit.md)
 - [FE-09: Testing Pass](assignments/week-06/fe-09-testing-pass.md)
+- [FE-AA1: Buttons with a Brain — Motion & State Micro-interactions](assignments/week-06/fe-aa1-buttons-with-a-brain.md)
 
 ### Agent Workspace
 
@@ -159,6 +160,7 @@ See [assignments/week-05/fe-07-tool-results.md](assignments/week-05/fe-07-tool-r
 - ✅ Explain It Like You Built It — The AI Chat Flow
 - ✅ Survive the Crit — AI-Assisted Review & Fixes
 - ✅ FE-09: Testing Pass
+- ✅ FE-AA1: Buttons with a Brain — Motion & State Micro-interactions
 
 ### Checkpoint 1
 
@@ -178,7 +180,7 @@ The project ships with an automated test suite that runs in CI on every push/PR 
 | `npm run lint` | ESLint |
 | `npm run build` | Production build |
 
-- **Component tests** (`components/**/*.test.tsx`) cover the chat message renderer (text, markdown, streaming indicator, all `dynamic-tool` lifecycle states, tool error + retry), the Project Docs result card, the composer, the error banner, the empty/loading states, and the full chat integration.
+- **Component tests** (`components/**/*.test.tsx`) cover the chat message renderer (text, markdown, streaming indicator, all `dynamic-tool` lifecycle states, tool error + retry), the Project Docs result card, the composer, the error banner, the empty/loading states, the full chat integration, and the stateful `SendButton` (idle/loading/success/error, keyboard activation, reduced motion).
 - **AI route mock** — component tests mock the `useChat` hook; the API route tests and the Playwright server run with `AI_MOCK=1` so `createMockModel()` (`lib/ai/mockModel.ts`) serves replies instead of Claude. Tests never call a real AI API.
 - **E2E** (`e2e/chat.spec.ts`) verifies the primary flow: open `/chat` → send a message → mock assistant reply appears, plus the `searchProjectDocs` tool flow rendering the structured result card.
 

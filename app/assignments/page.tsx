@@ -282,6 +282,13 @@ const weeks: WeekData[] = [
         status: "completed",
       },
       {
+        title: "FE-AA1: Buttons with a Brain — Motion & State Micro-interactions",
+        filePath: "week-06/fe-aa1-buttons-with-a-brain.md",
+        summary:
+          "Rebuilt the AI chat's send control as a single morphing SendButton with an explicit phase lifecycle (idle → loading → success → error → idle). Motion is limited to transform/opacity on a fixed footprint, every state keeps icon + colour + label + aria-live feedback, and reduced motion is handled both via a matchMedia hook (data-reduced) and a CSS media-query fallback. ChatInput gained a rapid-click dedup guard, a stop-vs-success race fix, and timed feedback. 48 Vitest tests + 2 Playwright E2E + tsc/lint/build all pass; a deterministic demo lives on /playground.",
+        status: "completed",
+      },
+      {
         title: "FE-09: Testing Pass",
         filePath: "week-06/fe-09-testing-pass.md",
         summary:

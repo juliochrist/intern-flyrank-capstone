@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Modal } from "../../playground/Modal";
 import { Tabs, TabsList, TabsTab, TabsPanel } from "../../playground/Tabs";
 import { Disclosure, Accordion } from "../../playground/Disclosure";
+import { SendButtonDemo } from "../../playground/SendButtonDemo";
 import Container from "../../components/Container";
 
 function Section({
@@ -198,6 +199,12 @@ export default function PlaygroundPage() {
               </Tabs>
             </Preview>
           </div>
+        </Section>
+
+        <Section title="Stateful Send Button (FE-AA1)">
+          <Preview label="Send button lifecycle — deterministic demo">
+            <SendButtonDemo />
+          </Preview>
         </Section>
 
         <Section title="Disclosure / Accordion">

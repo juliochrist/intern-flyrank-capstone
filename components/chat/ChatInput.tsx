@@ -1,6 +1,12 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  SendButton,
+  SEND_BUTTON_ERROR_MS,
+  SEND_BUTTON_SUCCESS_MS,
+  type SendButtonPhase,
+} from "./SendButton";
 
 interface ChatInputProps {
   input: string;
@@ -11,6 +17,8 @@ interface ChatInputProps {
   status: "submitted" | "streaming" | "ready" | "error";
   hasMessages: boolean;
 }
+
+type FeedbackPhase = "idle" | "success" | "error";
 
 export function ChatInput({
   input,
@@ -25,27 +33,92 @@ export function ChatInput({
   const isBusy = status === "submitted" || status === "streaming";
   const isEmpty = !input.trim();
 
+  const [feedback, setFeedback] = useState<FeedbackPhase>("idle");
+  const prevStatusRef = useRef(status);
+  const submittingRef = useRef(false);
+  const stoppedRef = useRef(false);
+  const feedbackTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const clearFeedbackTimer = useCallback(() => {
+    if (feedbackTimerRef.current != null) {
+      clearTimeout(feedbackTimerRef.current);
+      feedbackTimerRef.current = null;
+    }
+  }, []);
+
+  // Release the duplicate-submission guard and drive success/error feedback.
+  useEffect(() => {
+    const wasBusy =
+      prevStatusRef.current === "submitted" ||
+      prevStatusRef.current === "streaming";
+    const nowBusy = status === "submitted" || status === "streaming";
+
+    if (!nowBusy) submittingRef.current = false;
+
+    if (wasBusy && !nowBusy) {
+      clearFeedbackTimer();
+      if (status === "error") {
+        setFeedback("error");
+        feedbackTimerRef.current = setTimeout(
+          () => setFeedback("idle"),
+          SEND_BUTTON_ERROR_MS,
+        );
+      } else if (stoppedRef.current) {
+        stoppedRef.current = false;
+        setFeedback("idle");
+      } else {
+        setFeedback("success");
+        feedbackTimerRef.current = setTimeout(
+          () => setFeedback("idle"),
+          SEND_BUTTON_SUCCESS_MS,
+        );
+      }
+    }
+
+    prevStatusRef.current = status;
+  }, [status, clearFeedbackTimer]);
+
+  useEffect(() => clearFeedbackTimer, [clearFeedbackTimer]);
+
   useEffect(() => {
     if (!isBusy && textareaRef.current) {
       textareaRef.current.focus();
     }
   }, [isBusy]);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (isEmpty || isBusy) return;
+  const doSend = () => {
+    if (isEmpty || isBusy || submittingRef.current) return;
+    submittingRef.current = true;
+    clearFeedbackTimer();
+    setFeedback("idle");
     onSend(input.trim());
     onInputChange("");
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    doSend();
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
-      if (isEmpty || isBusy) return;
-      onSend(input.trim());
-      onInputChange("");
+      doSend();
     }
   };
+
+  const handleStop = () => {
+    stoppedRef.current = true;
+    onStop();
+  };
+
+  const phase: SendButtonPhase = isBusy
+    ? "loading"
+    : feedback === "success"
+      ? "success"
+      : feedback === "error"
+        ? "error"
+        : "idle";
 
   return (
     <div
@@ -71,63 +144,15 @@ export function ChatInput({
           />
         </div>
 
-        <div className="flex shrink-0 gap-2">
-          {isBusy ? (
-            <button
-              type="button"
-              onClick={onStop}
-              aria-label="Stop generation"
-              className="inline-flex items-center justify-center rounded-xl px-4 py-3 text-sm font-medium text-white transition hover:-translate-y-0.5"
-              style={{
-                background:
-                  "linear-gradient(135deg, #ef4444 0%, #dc2626 100%)",
-                boxShadow: "0 4px 16px rgba(239,68,68,0.3)",
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <rect x="6" y="6" width="12" height="12" rx="2" />
-              </svg>
-            </button>
-          ) : (
-            <button
-              type="submit"
-              disabled={isEmpty || isBusy}
-              aria-label="Send message"
-              className="inline-flex items-center justify-center rounded-xl px-4 py-3 text-sm font-medium text-white transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0"
-              style={{
-                background:
-                  isEmpty
-                    ? "rgba(255,255,255,0.08)"
-                    : "linear-gradient(135deg, #7C6AFF 0%, #6A58E8 100%)",
-                boxShadow: isEmpty
-                  ? "none"
-                  : "0 4px 16px rgba(124,106,255,0.35)",
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <line x1="22" y1="2" x2="11" y2="13" />
-                <polygon points="22 2 15 22 11 13 2 9 22 2" />
-              </svg>
-            </button>
-          )}
+        <div className="flex shrink-0 items-center">
+          <SendButton
+            phase={phase}
+            disabled={isEmpty}
+            canStop={status === "streaming"}
+            onSend={doSend}
+            onStop={handleStop}
+            onRetry={onRegenerate}
+          />
         </div>
       </form>
 
