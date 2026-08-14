@@ -281,6 +281,13 @@ const weeks: WeekData[] = [
           "Ran an AI-assisted critique of the live portfolio as a hiring manager. Categorized findings into MUST-FIX and NICE-TO-HAVE and implemented all of them: personal branding everywhere instead of 'FlyRank Capstone', removed dead placeholder links (Settings, Health, CV/booking 'coming soon'), rebuilt the Contact page around a single email CTA, surfaced the flagship AI chat on Home and Projects, and fixed a stale GitHub URL. Verified with tsc, lint, and build.",
         status: "completed",
       },
+      {
+        title: "FE-09: Testing Pass",
+        filePath: "week-06/fe-09-testing-pass.md",
+        summary:
+          "Set up the project's automated testing foundation: Vitest + React Testing Library (35 tests across the chat message renderer, tool result card, composer, error banner, empty/loading states, and the full chat integration), an AI-route mock so tests never call a real model, a deterministic Playwright E2E test of the primary chat flow (plain message + searchProjectDocs tool), and a GitHub Actions CI pipeline running tsc, lint, Vitest, Playwright, and build on every push/PR with no API keys. All suites pass.",
+        status: "completed",
+      },
     ],
   },
 ];
