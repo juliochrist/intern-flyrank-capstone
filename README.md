@@ -16,6 +16,19 @@
 
 ---
 
+## Adding New Case Studies
+
+New project case studies follow a short, repeatable workflow so they can be added in
+minutes instead of a rebuild. The next scheduled case study is **TradeIntel** (target:
+2026-09-30).
+
+- [How to add a case study](docs/adding-a-case-study.md) — where the data lives, the
+  Problem → What I did → What came of it format, and the pre-publish checklist
+- [Next case study draft](docs/next-case-study.md) — the TradeIntel 3-beat draft
+- [Reminder](docs/reminder.md) — recurring reminder for the next case study
+
+---
+
 ## Assignments
 
 ### Week 1
