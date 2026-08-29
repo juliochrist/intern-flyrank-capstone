@@ -295,6 +295,13 @@ const weeks: WeekData[] = [
           "Set up the project's automated testing foundation: Vitest + React Testing Library (35 tests across the chat message renderer, tool result card, composer, error banner, empty/loading states, and the full chat integration), an AI-route mock so tests never call a real model, a deterministic Playwright E2E test of the primary chat flow (plain message + searchProjectDocs tool), and a GitHub Actions CI pipeline running tsc, lint, Vitest, Playwright, and build on every push/PR with no API keys. All suites pass.",
         status: "completed",
       },
+      {
+        title: "Make It Do Something — Working Contact Form",
+        filePath: "week-06/make-it-do-something.md",
+        summary:
+          "Implemented a fully working contact form on the Contact page using React Hook Form + Zod for validation, a Next.js API route for server-side handling, and Resend for email delivery. The form validates client and server side, handles loading/success/error states with full accessibility (aria-live, role=alert, proper labels), and sends submissions to a real email inbox. Resend free tier (3,000 emails/month) keeps the API key server-side only. Verified end-to-end with a live test submission.",
+        status: "completed",
+      },
     ],
   },
 ];

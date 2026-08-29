@@ -3,6 +3,7 @@ import { Mail, BriefcaseBusiness, Globe } from "lucide-react";
 import Container from "../../components/Container";
 import Card from "../../components/Card";
 import Section from "../../components/Section";
+import ContactForm from "../../components/contact/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact — Julio Christianto",
@@ -39,8 +40,7 @@ export default function ContactPage() {
                   Let&rsquo;s build together
                 </h2>
                 <p className="mt-2 text-sm leading-relaxed text-muted">
-                  Email is the fastest way to reach me. No booking link needed
-                  — send a message and I will reply.
+                  Fill out the form or email me directly — I&rsquo;ll get back to you.
                 </p>
               </div>
               <a
@@ -55,6 +55,23 @@ export default function ContactPage() {
                 Email me
               </a>
             </div>
+          </div>
+
+          <div
+            className="rounded-2xl p-6 sm:p-8"
+            style={{
+              background: "rgba(35,33,44,0.35)",
+              backdropFilter: "blur(20px)",
+              WebkitBackdropFilter: "blur(20px)",
+              border: "1px solid rgba(255,255,255,0.08)",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
+            }}
+          >
+            <h2 className="text-xl font-semibold text-foreground">Send a message</h2>
+            <p className="mt-2 text-sm text-muted">
+              Or use the form below — it goes straight to my inbox.
+            </p>
+            <ContactForm className="mt-6" />
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2">
