@@ -78,6 +78,7 @@ minutes instead of a rebuild. The next scheduled case study is **TradeIntel** (t
 - [Survive the Crit — AI-Assisted Review & Fixes](assignments/week-06/survive-the-crit.md)
 - [FE-09: Testing Pass](assignments/week-06/fe-09-testing-pass.md)
 - [FE-AA1: Buttons with a Brain — Motion & State Micro-interactions](assignments/week-06/fe-aa1-buttons-with-a-brain.md)
+- [Make It Do Something — Working Contact Form](assignments/week-06/make-it-do-something.md)
 
 ### Agent Workspace
 
@@ -174,6 +175,7 @@ See [assignments/week-05/fe-07-tool-results.md](assignments/week-05/fe-07-tool-r
 - ✅ Survive the Crit — AI-Assisted Review & Fixes
 - ✅ FE-09: Testing Pass
 - ✅ FE-AA1: Buttons with a Brain — Motion & State Micro-interactions
+- ✅ Make It Do Something — Working Contact Form
 
 ### Checkpoint 1
 
