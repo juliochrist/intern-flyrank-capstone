@@ -34,54 +34,34 @@ export default function RootLayout({
 
         <div className="fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
           <div
-            className="pointer-events-none absolute"
+            className="pointer-events-none absolute inset-0 max-w-full max-h-full"
             style={{
-              width: "800px",
-              height: "800px",
               background:
-                "radial-gradient(circle, rgba(124,106,255,0.25) 0%, transparent 65%)",
-              filter: "blur(120px)",
-              top: "-300px",
-              left: "-200px",
+                "radial-gradient(circle at 20% 20%, rgba(124,106,255,0.25) 0%, transparent 50%)",
               animation: "nebula-drift 25s ease-in-out infinite",
             }}
           />
           <div
-            className="pointer-events-none absolute"
+            className="pointer-events-none absolute inset-0 max-w-full max-h-full"
             style={{
-              width: "600px",
-              height: "600px",
               background:
-                "radial-gradient(circle, rgba(107,138,255,0.18) 0%, transparent 65%)",
-              filter: "blur(100px)",
-              bottom: "-150px",
-              right: "-150px",
+                "radial-gradient(circle at 80% 80%, rgba(107,138,255,0.18) 0%, transparent 50%)",
               animation: "nebula-drift-2 22s ease-in-out infinite reverse",
             }}
           />
           <div
-            className="pointer-events-none absolute"
+            className="pointer-events-none absolute inset-0 max-w-full max-h-full"
             style={{
-              width: "500px",
-              height: "500px",
               background:
-                "radial-gradient(circle, rgba(180,120,255,0.15) 0%, transparent 65%)",
-              filter: "blur(90px)",
-              top: "40%",
-              left: "55%",
+                "radial-gradient(circle at 50% 50%, rgba(180,120,255,0.15) 0%, transparent 50%)",
               animation: "nebula-drift 20s ease-in-out infinite",
             }}
           />
           <div
-            className="pointer-events-none absolute"
+            className="pointer-events-none absolute inset-0 max-w-full max-h-full"
             style={{
-              width: "400px",
-              height: "400px",
               background:
-                "radial-gradient(circle, rgba(124,106,255,0.12) 0%, transparent 65%)",
-              filter: "blur(80px)",
-              top: "60%",
-              left: "10%",
+                "radial-gradient(circle at 10% 60%, rgba(124,106,255,0.12) 0%, transparent 50%)",
               animation: "nebula-drift-2 28s ease-in-out infinite reverse",
             }}
           />

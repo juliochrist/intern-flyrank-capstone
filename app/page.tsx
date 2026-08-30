@@ -203,7 +203,7 @@ export default function HomePage() {
             >
               <Link
                 href="/projects"
-                className="inline-flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5"
                 style={{
                   background: "linear-gradient(135deg, #7C6AFF 0%, #6A58E8 100%)",
                   boxShadow: "0 4px 20px rgba(124,106,255,0.35)",
@@ -213,7 +213,7 @@ export default function HomePage() {
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-semibold text-foreground transition-all duration-200 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-foreground transition-all duration-200 hover:-translate-y-0.5"
                 style={{
                   background: "rgba(35,33,44,0.35)",
                   backdropFilter: "blur(16px)",
@@ -470,7 +470,7 @@ export default function HomePage() {
             >
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5"
                 style={{
                   background: "linear-gradient(135deg, #7C6AFF 0%, #6A58E8 100%)",
                   boxShadow: "0 4px 20px rgba(124,106,255,0.35)",
@@ -480,7 +480,7 @@ export default function HomePage() {
               </Link>
               <Link
                 href="/projects"
-                className="inline-flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-semibold text-foreground transition-all duration-200 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-foreground transition-all duration-200 hover:-translate-y-0.5"
                 style={{
                   background: "rgba(35,33,44,0.35)",
                   backdropFilter: "blur(16px)",
