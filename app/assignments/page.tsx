@@ -264,7 +264,7 @@ const weeks: WeekData[] = [
   },
   {
     week: 6,
-    label: "Explain It Like You Built It",
+    label: "Explain It Like You Built It + Open It on Your Phone",
     status: "completed",
     items: [
       {

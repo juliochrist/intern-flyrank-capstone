@@ -176,6 +176,7 @@ See [assignments/week-05/fe-07-tool-results.md](assignments/week-05/fe-07-tool-r
 - ✅ FE-09: Testing Pass
 - ✅ FE-AA1: Buttons with a Brain — Motion & State Micro-interactions
 - ✅ Make It Do Something — Working Contact Form
+- ✅ Open It on Your Phone — QA + responsive polish (mobile overflow, tap targets, text sizing)
 
 ### Checkpoint 1
 

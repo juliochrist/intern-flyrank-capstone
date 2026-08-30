@@ -310,7 +310,7 @@ export default function HomePage() {
                     {project.tech.map((t) => (
                       <span
                         key={t}
-                        className="rounded-full px-2.5 py-0.5 text-[10px] font-medium"
+                        className="rounded-full px-2.5 py-0.5 text-[10px] font-medium sm:text-sm"
                         style={{
                           background: "rgba(124,106,255,0.15)",
                           color: "#7C6AFF",
