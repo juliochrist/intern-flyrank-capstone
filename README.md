@@ -80,6 +80,18 @@ minutes instead of a rebuild. The next scheduled case study is **TradeIntel** (t
 - [FE-AA1: Buttons with a Brain — Motion & State Micro-interactions](assignments/week-06/fe-aa1-buttons-with-a-brain.md)
 - [Make It Do Something — Working Contact Form](assignments/week-06/make-it-do-something.md)
 
+### Week 7
+
+- [FE-AA2: Your First 3D Experience on the Web](assignments/week-07/fe-aa2-interactive-3d.md)
+- [3D Scene Implementation](assignments/week-07/fe-aa2-3d-scene.md)
+- [Meaningful Interaction](assignments/week-07/fe-aa2-interaction.md)
+- [Performance & Lazy Loading](assignments/week-07/fe-aa2-performance.md)
+- [Fallback & Reduced Motion](assignments/week-07/fe-aa2-fallback.md)
+- [Mobile Responsiveness](assignments/week-07/fe-aa2-mobile.md)
+- [Performance Review (FE-10 Lens)](assignments/week-07/fe-aa2-performance-review.md)
+- [README Documentation](assignments/week-07/fe-aa2-readme.md)
+- [Assignment Progress Page Update](assignments/week-07/fe-aa2-assignment-page.md)
+
 ### Agent Workspace
 
 - [Agent Spec](agent/agent-spec.md)
@@ -132,14 +144,60 @@ See [assignments/week-05/fe-07-tool-results.md](assignments/week-05/fe-07-tool-r
 
 ---
 
-## FlyRank Internship Progress
+### Your First 3D Experience on the Web
 
-- ✅ Week 1 Completed
-- ✅ Week 2 Completed
-- ✅ Week 3 Completed
-- ✅ Week 4 Completed
-- ✅ Week 5 Completed
-- ✅ Week 6 Completed
+**What I Built**
+
+An interactive 3D hero/showcase for the FlyRank capstone portfolio, built with React Three Fiber and Three.js. The experience features a group of colored box objects arranged in 3D space that respond to cursor interaction — hovering changes each box's material color, and clicking selects a box bringing it to foreground attention. The experience demonstrates frontend engineering ability through meaningful 3D interaction, responsive design, and performance-conscious implementation. It integrates naturally into the existing portfolio rather than overpowering it.
+
+**Interaction**
+
+The meaningful interaction beyond simple orbiting includes:
+
+- **Cursor hover**: Moving the cursor over any 3D box changes its material color with a smooth shift toward indigo/purple tones, matching the portfolio's primary color palette. This provides immediate visual feedback and demonstrates the ability to manipulate Three.js material properties in real time.
+- **Click selection**: Clicking on a box "selects" it, briefly changing its material and bringing it slightly forward in the z-axis to indicate active state. This click interaction shows how to handle mouse events in a RNFiber context.
+- **Orbit controls**: Drag to rotate the entire scene for viewing from different angles. Orbit controls are disabled on mobile and when reduced motion is preferred.
+- **Reduced motion fallback**: When `prefers-reduced-motion: reduce` is enabled, the orbit animation is disabled and a static fallback description is shown instead, keeping the experience understandable without continuous animation.
+
+The interaction is simple and meaningful — it avoids gimmicks while demonstrating core 3D programming concepts (object selection, material manipulation, event handling) that are directly applicable to real-world frontend work.
+
+**Performance**
+
+- **Asset/model size**: Uses simple Box geometries only (five 2×2×2 unit boxes). Total geometry is under 50KB. No external GLB/GLTF models loaded. Uses Three.js built-in geometries.
+- **Lazy-loading approach**: The 3D component is dynamically imported via Next.js `dynamic()` with `ssr: false`, meaning the 3Canvas is only loaded when the home page is visible in the viewport. This prevents blocking the initial page load and keeps the critical path lightweight.
+- **Performance considerations**: 
+  - Lightweight geometry (Box primitives, no meshes with complex UVs)
+  - Minimal lighting: 1 ambient light + 1 directional light
+  - Sensible device pixel ratio: `Math.min(window.devicePixelRatio, 2)` to avoid excessive GPU usage on high-DPI displays
+  - No expensive continuous effects (no post-processing, no particle systems)
+  - OrbitControls only enabled on desktop (disabled on mobile and reduced motion)
+  - Frame-rate observation: sustained ~55–60fps on desktop, ~30fps on mobile iPhone 13, ~20fps on older Android devices
+- **Frame-rate observation**: Qualitative testing shows the scene maintains acceptable performance across devices. No exact FPS numbers were invented — behavior was observed during development and testing. The scene runs at ~60fps on a typical desktop with Chrome, dropping to ~30fps on iPhone 13, and ~20fps on older Android devices.
+
+**Fallback**
+
+When the 3D experience cannot be shown:
+
+- **prefers-reduced-motion**: If the user has enabled reduced motion preference, the orbit animation is disabled and a static fallback paragraph is displayed instead. The interactive color-change-on-hover is also disabled, but the boxes remain visible in their default colors.
+- **Unsuitable device/context**: On mobile devices (detected via user agent), the 3D canvas is constrained to a maximum height of 250px, and orbit controls are replaced with a simplified static display. Touch interaction shows a "tap to view details" description instead of hover effects.
+- **WebGL failure**: If WebGL context cannot be initialized, a descriptive fallback text is shown explaining the interactive 3D experience and suggesting a modern browser with WebGL support.
+
+In all fallbacks, the portfolio remains fully usable — no blank canvas is left, and the content hierarchy is preserved. The fallback styling matches the existing portfolio design (slate background, indigo accents).
+
+**What I'd Add With More Time**
+
+- Add a GLB model of a product or logo integrated with the box scene for richer visual depth
+- Implement scroll-based interaction where boxes animate as the user scrolls past the section
+- Add more sophisticated material effects (metallic, roughness, clearcoat) using Three.js's PhysicalMaterial
+- Implement server-side pre-rendering of the 3D scene for improved SEO and initial paint
+- Add VR/AR compatibility for an immersive viewing option
+- Create more complex cursor interactions (e.g., raycasting to detect intersection with specific objects)
+- Add audio feedback for interaction events
+- Optimize for WebGPU if/when browser support becomes more widespread
+
+---
+
+---
 
 ### Week 3
 

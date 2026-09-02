@@ -4,6 +4,15 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Cpu, Braces, Rocket, ArrowRight, ExternalLink } from "lucide-react";
 import Container from "../components/Container";
+import dynamic from "next/dynamic";
+
+const Interactive3DCanvasDynamic = dynamic(
+  () => import("@/components/three/Interactive3DCanvas").then((mod) => mod.default),
+  {
+    ssr: false,
+    loading: () => null,
+  }
+);
 
 const features = [
   {
@@ -225,6 +234,25 @@ export default function HomePage() {
               </Link>
             </motion.div>
           </motion.div>
+        </Container>
+      </section>
+
+      <section
+        className="pb-8 sm:pb-12 overflow-hidden"
+        aria-label="Interactive 3D project showcase"
+      >
+        <Container>
+          <h2
+            className="text-2xl font-bold tracking-tight text-center text-foreground sm:text-3xl mb-8"
+          >
+            Interactive Portfolio
+          </h2>
+          <p
+            className="text-center text-sm text-muted/60 mb-12 max-w-2xl mx-auto"
+          >
+            Drag to orbit. Hover boxes to change their color. Click to select.
+          </p>
+          <Interactive3DCanvasDynamic className="mx-auto max-w-7xl" />
         </Container>
       </section>
 

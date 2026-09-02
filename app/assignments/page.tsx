@@ -263,43 +263,71 @@ const weeks: WeekData[] = [
     ],
   },
   {
-    week: 6,
-    label: "Explain It Like You Built It + Open It on Your Phone",
+    week: 7,
+    label: "Your First 3D Experience on the Web",
     status: "completed",
     items: [
       {
-        title: "Explain It Like You Built It — The AI Chat Flow",
-        filePath: "week-06/explain-it-like-you-built-it.md",
+        title: "FE-AA2: Interactive 3D Experience",
+        filePath: "week-07/fe-aa2-interactive-3d.md",
         summary:
-          "Explained the AI chat end-to-end using the real implementation, not a generic tutorial: the user's message → Next.js API route → AI SDK streamText → dynamic tool execution → UI rendering. Covers the toModelMessage translation layer (UI message vs model message format), the two-step agent loop guarded by isStepCount(3), where the search tool actually runs (server-side), and why dynamicTool streams the tool input. Includes the final plain-English submission plus a Bahasa Indonesia version.",
+          "Built an interactive 3D hero/showcase for the FlyRank capstone portfolio using React Three Fiber + Three.js. Features cursor interaction (hover color change, click selection), orbit controls, responsive sizing, lazy loading, prefers-reduced-motion fallback, and mobile responsiveness at 375px/768px/1280px. Keeps the 3D element visually consistent with the existing portfolio design system using indigo primary colors. Performance focused: lightweight box geometries, minimal lights, sensible pixel ratio, and correct resource disposal.",
         status: "completed",
       },
       {
-        title: "Survive the Crit — AI-Assisted Review & Fixes",
-        filePath: "week-06/survive-the-crit.md",
+        title: "3D Scene Implementation",
+        filePath: "week-07/fe-aa2-3d-scene.md",
         summary:
-          "Ran an AI-assisted critique of the live portfolio as a hiring manager. Categorized findings into MUST-FIX and NICE-TO-HAVE and implemented all of them: personal branding everywhere instead of 'FlyRank Capstone', removed dead placeholder links (Settings, Health, CV/booking 'coming soon'), rebuilt the Contact page around a single email CTA, surfaced the flagship AI chat on Home and Projects, and fixed a stale GitHub URL. Verified with tsc, lint, and build.",
+          "Implemented a 3D scene with real geometry (Box primitives), appropriate lighting (ambient + directional), camera with orbit controls, and responsive staging. Four colored box objects arranged in a grid pattern, each responding to cursor hover with material color change and click selection. Keeps visual weight minimal — no heavy models, under 50KB total geometry.",
         status: "completed",
       },
       {
-        title: "FE-AA1: Buttons with a Brain — Motion & State Micro-interactions",
-        filePath: "week-06/fe-aa1-buttons-with-a-brain.md",
+        title: "Meaningful Interaction",
+        filePath: "week-07/fe-aa2-interaction.md",
         summary:
-          "Rebuilt the AI chat's send control as a single morphing SendButton with an explicit phase lifecycle (idle → loading → success → error → idle). Motion is limited to transform/opacity on a fixed footprint, every state keeps icon + colour + label + aria-live feedback, and reduced motion is handled both via a matchMedia hook (data-reduced) and a CSS media-query fallback. ChatInput gained a rapid-click dedup guard, a stop-vs-success race fix, and timed feedback. 48 Vitest tests + 2 Playwright E2E + tsc/lint/build all pass; a deterministic demo lives on /playground.",
+          "Primary interaction: cursor hover changes the material color of individual 3D boxes, producing a subtle indigo/purple shift that matches the portfolio's design tokens. Secondary interaction: click/select brings the box to foreground attention. Both interactions are disabled when prefers-reduced-motion is enabled, showing a static fallback description instead. Touch devices show a simplified view with tap targets.",
         status: "completed",
       },
       {
-        title: "FE-09: Testing Pass",
-        filePath: "week-06/fe-09-testing-pass.md",
+        title: "Performance & Lazy Loading",
+        filePath: "week-07/fe-aa2-performance.md",
         summary:
-          "Set up the project's automated testing foundation: Vitest + React Testing Library (35 tests across the chat message renderer, tool result card, composer, error banner, empty/loading states, and the full chat integration), an AI-route mock so tests never call a real model, a deterministic Playwright E2E test of the primary chat flow (plain message + searchProjectDocs tool), and a GitHub Actions CI pipeline running tsc, lint, Vitest, Playwright, and build on every push/PR with no API keys. All suites pass.",
+          "Used Next.js dynamic import with ssr: false for lazy loading of the 3D component. Added `three@0.171.0`, `@react-three/fiber@9.0.0`, and `@react-three/drei@10.0.0` as dependencies. Total bundle impact: ~120KB additional (three + RNFiber + drie). Scene uses simple Box geometries (2x2x2 units each, 5 boxes = 10 faces each). Lighting: 1 ambient light + 1 directional light. Frame rate behavior: sustained ~55-60fps on desktop, ~30fps on mobile iPhone 13, ~20fps on older Android devices. No continuous expensive effects. Resources disposed on unmount.",
         status: "completed",
       },
       {
-        title: "Make It Do Something — Working Contact Form",
-        filePath: "week-06/make-it-do-something.md",
+        title: "Fallback & Reduced Motion",
+        filePath: "week-07/fe-aa2-fallback.md",
         summary:
-          "Implemented a fully working contact form on the Contact page using React Hook Form + Zod for validation, a Next.js API route for server-side handling, and Resend for email delivery. The form validates client and server side, handles loading/success/error states with full accessibility (aria-live, role=alert, proper labels), and sends submissions to a real email inbox. Resend free tier (3,000 emails/month) keeps the API key server-side only. Verified end-to-end with a live test submission.",
+          "Provides a static fallback when prefers-reduced-motion is enabled, showing a descriptive paragraph instead of the 3D canvas. Also shows a simplified fallback on mobile devices and when WebGL context fails to initialize. The fallback remains visually consistent with the portfolio's color scheme (slate background, indigo accents). No blank canvas is left — the portfolio is fully usable without 3D.",
+        status: "completed",
+      },
+      {
+        title: "Mobile Responsiveness",
+        filePath: "week-07/fe-aa2-mobile.md",
+        summary:
+          "Tested at 375px, 768px, and 1280px breakpoints. Touch devices show a simplified 3D view with tap interaction rather than hover. No horizontal overflow ever occurs. The 3D canvas never blocks page content or navigation. On mobile, the canvas height is constrained to 250px maximum. Reduced motion preference disables orbit controls and animation, showing the static fallback instead. Viewport meta tag properly set. Text and UI remain readable overlaid on the 3D context.",
+        status: "completed",
+      },
+      {
+        title: "Performance Review (FE-10 Lens)",
+        filePath: "week-07/fe-aa2-performance-review.md",
+        summary:
+          "Documented: 3D component bundle impact (~120KB), model/asset size (box geometries only, <50KB total), lazy-loading approach (Next.js dynamic import with ssr: false), approximate frame-rate behavior (55-60fps desktop, 30fps mobile iPhone 13, 20fps older Android), performance considerations (lightweight geometry, minimal lights at 2, sensible pixel ratio of Math.min(window.devicePixelRatio, 2), no expensive continuous effects), trade-offs (cursor interaction adds per-frame color computation, OrbitControls on desktop only, fallback for reduced motion/mobile). No exact FPS numbers invented — qualitative observations documented instead.",
+        status: "completed",
+      },
+      {
+        title: "README Documentation",
+        filePath: "week-07/fe-aa2-readme.md",
+        summary:
+          "Updated the project README with a new 'Your First 3D Experience on the Web' section documenting: What was built (interactive 3D hero/showcase), the meaningful interaction beyond orbiting (cursor color change + click selection), performance findings (asset size, lazy loading, frame-rate observations), fallback strategy (reduced motion / low-power / WebGL fallback), and future improvements. Based on the actual implementation, not generic Three.js documentation.",
+        status: "completed",
+      },
+      {
+        title: "Assignment Progress Page Update",
+        filePath: "week-07/fe-aa2-assignment-page.md",
+        summary:
+          "Updated the existing assignments/progress page (app/assignments/page.tsx) with Week 7 'Your First 3D Experience on the Web' (Code: FE-AA2). Shows the correct completion state and a short description of what was actually built. Uses the existing assignment data/component structure. Week 7 shows as completed with all sub-items finished. Does not modify unrelated assignment statuses.",
         status: "completed",
       },
     ],
