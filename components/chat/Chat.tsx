@@ -79,11 +79,12 @@ export function Chat() {
         <ChatEmptyState onExampleClick={handleExampleClick} />
       ) : (
         <ScrollToBottom isStreaming={isBusy}>
-          <div
-            className="mx-auto max-w-3xl space-y-4"
-            role="log"
-            aria-label="Chat messages"
-          >
+<div
+          className="mx-auto max-w-3xl space-y-4"
+          role="log"
+          aria-label="Chat messages"
+          aria-live="polite"
+        >
             {messages.map((message) => (
               <ChatMessage
                 key={message.id}

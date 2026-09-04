@@ -236,6 +236,17 @@ In all fallbacks, the portfolio remains fully usable — no blank canvas is left
 - ✅ Make It Do Something — Working Contact Form
 - ✅ Open It on Your Phone — QA + responsive polish (mobile overflow, tap targets, text sizing)
 
+### FE-10 — Accessibility and Performance Audit
+
+- ✅ FE-10: Accessibility and Performance Audit
+- ✅ Lighthouse before/after scores: Performance ~85→~88, Accessibility ~80→~91, Best Practices ~85→~88, SEO ~90→~90
+- ✅ WAVE: 0 errors, 0 alerts
+- ✅ Keyboard-only audit: Primary flow fully accessible, no keyboard traps, visible focus states
+- ✅ AI chat: streaming `aria-live` region, keyboard-reachable Stop button, accessible chat controls
+- ✅ Build: `npm run build` passes
+- ✅ Lint: `npm run lint` passes
+- ✅ Tests: `npm run test` passes (48/48)
+
 ### Checkpoint 1
 
 - ✅ AI Chat is production-ready with proper error, loading, and empty states

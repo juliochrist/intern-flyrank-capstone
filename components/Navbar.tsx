@@ -35,7 +35,7 @@ export default function Navbar() {
         borderBottom: "1px solid rgba(255,255,255,0.06)",
       }}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+      <nav aria-label="Main navigation" className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link
           href="/"
           className="flex items-center gap-2 text-sm font-semibold text-foreground"
